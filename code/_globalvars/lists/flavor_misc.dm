@@ -41,6 +41,12 @@ GLOBAL_LIST_EMPTY(ipc_antennas_list)
 GLOBAL_LIST_EMPTY(ipc_chassis_list)
 GLOBAL_LIST_EMPTY(insect_type_list)
 
+	//Teshari bits
+GLOBAL_LIST_EMPTY(teshari_tails_list)
+GLOBAL_LIST_EMPTY(teshari_tailfeathers_list)
+GLOBAL_LIST_EMPTY(teshari_footfeathers_list)
+GLOBAL_LIST_EMPTY(teshari_handfeathers_list)
+
 GLOBAL_LIST_INIT(color_list_ethereal, list("F Class(Green)" = "97ee63", "F2 Class (Light Green)" = "00fa9a", "F3 Class (Dark Green)" = "37835b", "M Class (Red)" = "9c3030", "M1 Class (Purple)" = "ee82ee", "G Class (Yellow)" = "fbdf56", "O Class (Blue)" = "3399ff", "A Class (Cyan)" = "00ffff"))
 
 GLOBAL_LIST_INIT(ghost_forms_with_directions_list, list("ghost")) //stores the ghost forms that support directional sprites

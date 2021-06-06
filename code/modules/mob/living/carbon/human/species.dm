@@ -625,6 +625,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		else if ("tail_human" in mutant_bodyparts)
 			bodyparts_to_add -= "waggingtail_human"
 
+	if("teshari_tail" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "teshari_tail"
+
+	if("teshari_tailfeather" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "teshari_tailfeather"
+
 	if("spines" in mutant_bodyparts)
 		if(!H.dna.features["spines"] || H.dna.features["spines"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 			bodyparts_to_add -= "spines"
@@ -744,6 +752,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.ipc_chassis_list[H.dna.features["ipc_chassis"]]
 				if("insect_type")
 					S = GLOB.insect_type_list[H.dna.features["insect_type"]]
+				if("teshari_tail")
+					S = GLOB.teshari_tails_list[H.dna.features["teshari_tail"]]
+				if("teshari_tailfeather")
+					S = GLOB.teshari_tailfeathers_list[H.dna.features["teshari_tailfeather"]]
+				if("teshari_footfeather")
+					S = GLOB.teshari_footfeathers_list[H.dna.features["teshari_footfeather"]]
+				if("teshari_handfeather")
+					S = GLOB.teshari_handfeathers_list[H.dna.features["teshari_handfeather"]]
 			if(!S || S.icon_state == "none")
 				continue
 
