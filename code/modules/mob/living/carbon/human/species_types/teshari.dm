@@ -2,7 +2,7 @@
 	// Them things from that one Starbound mod
 	name = "Teshari"
 	id = "teshari"
-	limbs_id = "teshari"
+	limbs_id = "fluffliz"
 	say_mod = "hisses"
 	default_color = "00FF00"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
