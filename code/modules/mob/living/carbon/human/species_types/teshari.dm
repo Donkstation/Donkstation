@@ -3,11 +3,12 @@
 	name = "Teshari"
 	id = "teshari"
 	limbs_id = "fluffliz"
-	say_mod = "hisses"
-	default_color = "00FF00"
+	say_mod = "chirps"
+	default_color = "001144"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID, MOB_REPTILE)
 	mutant_bodyparts = list("teshari_tail", "teshari_tailfeather", "teshari_footfeather", "teshari_handfeather")
+	mutanttail = /obj/item/organ/tail/teshari
 	coldmod = 0.67
 	heatmod = 1.5
 	default_features = list("mcolor" = "0F0", "teshari_tail" = "Teshari Tail", "teshari_tailfeather" = "None", "teshari_footfeather" = "None", "teshari_handfeather" = "None")
@@ -22,7 +23,7 @@
 	liked_food = GROSS | MEAT
 	inert_mutation = FIREBREATH
 	deathsound = 'sound/voice/lizard/deathsound.ogg'
-	species_language_holder = /datum/language_holder/lizard
+	species_language_holder = /datum/language_holder/teshari
 
 	speedmod = -0.1
 

@@ -18,6 +18,7 @@
 		/datum/language/codespeak,
 		/datum/language/common,
 		/datum/language/draconic,
+		/datum/language/schechi,
 		/datum/language/moffic,
 		/datum/language/monkey,
 		/datum/language/narsie,
