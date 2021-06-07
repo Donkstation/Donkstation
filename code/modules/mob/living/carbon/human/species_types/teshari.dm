@@ -10,7 +10,7 @@
 	mutant_bodyparts = list("teshari_tail", "teshari_tailfeather", "teshari_footfeather", "teshari_handfeather")
 	coldmod = 0.67
 	heatmod = 1.5
-	default_features = list("mcolor" = "0F0", "teshari_tail" = "Default Teshari Tail", "teshari_tailfeather" = "None", "teshari_footfeather" = "None", "teshari_handfeather" = "None")
+	default_features = list("mcolor" = "0F0", "teshari_tail" = "Teshari Tail", "teshari_tailfeather" = "None", "teshari_footfeather" = "None", "teshari_handfeather" = "None")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
