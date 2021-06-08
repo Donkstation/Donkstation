@@ -2260,7 +2260,7 @@
 	icon = 'icons/mob/teshari_parts.dmi'
 
 /datum/sprite_accessory/teshari_tails/default
-	name = "Teshari Tail"
+	name = "Tail"
 	icon_state = "dtail"
 
 /datum/sprite_accessory/teshari_tailfeathers
@@ -2271,7 +2271,7 @@
 	icon_state = "None"
 
 /datum/sprite_accessory/teshari_tailfeathers/default
-	name = "Teshari Tail Feathers"
+	name = "Tail Feathers"
 	icon_state = "dtfeat"
 
 /datum/sprite_accessory/teshari_footfeathers
@@ -2282,7 +2282,7 @@
 	icon_state = "None"
 
 /datum/sprite_accessory/teshari_footfeathers/default
-	name = "Teshari Foot Feathers"
+	name = "Foot Feathers"
 	icon_state = "dffeat"
 
 /datum/sprite_accessory/teshari_handfeathers
@@ -2293,5 +2293,13 @@
 	icon_state = "None"
 
 /datum/sprite_accessory/teshari_handfeathers/default
-	name = "Teshari Hand Feathers"
+	name = "Hand Feathers"
 	icon_state = "dhfeat"
+
+/datum/sprite_accessory/teshari_modeyes
+	icon = 'icons/mob/teshari_parts.dmi'
+
+/datum/sprite_accessory/teshari_modeyes/default
+	name = "Eyes"
+	icon_state = "normal"
+	color_src = FACEHAIR

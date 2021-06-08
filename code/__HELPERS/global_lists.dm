@@ -39,6 +39,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/teshari_tailfeathers, GLOB.teshari_tailfeathers_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/teshari_footfeathers, GLOB.teshari_footfeathers_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/teshari_handfeathers, GLOB.teshari_handfeathers_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/teshari_modeyes, GLOB.teshari_modeyes_list)
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))

@@ -673,6 +673,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!H.dna.features["ipc_screen"] || H.dna.features["ipc_screen"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
 			bodyparts_to_add -= "ipc_screen"
 
+	if("teshari_modeye" in mutant_bodyparts)
+		if(!H.dna.features["teshari_modeye"] || H.dna.features["teshari_modeye"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+			bodyparts_to_add -= "teshari_modeye"
+
 	if("ipc_antenna" in mutant_bodyparts)
 		if(!H.dna.features["ipc_antenna"] || H.dna.features["ipc_antenna"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
 			bodyparts_to_add -= "ipc_antenna"
@@ -760,6 +764,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.teshari_footfeathers_list[H.dna.features["teshari_footfeather"]]
 				if("teshari_handfeather")
 					S = GLOB.teshari_handfeathers_list[H.dna.features["teshari_handfeather"]]
+				if("teshari_modeye")
+					S = GLOB.teshari_modeyes_list[H.dna.features["teshari_modeye"]]
 			if(!S || S.icon_state == "none")
 				continue
 

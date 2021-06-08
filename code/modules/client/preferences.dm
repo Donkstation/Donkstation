@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "insect_type" = "Common Fly", "teshari_tail" = "Default Teshari Tail", "teshari_tailfeather" = "Default Teshari Tail Feathers", "teshari_footfeather" = "Default Teshari Foot Feathers", "teshari_handfeather" = "Default Teshari Hand Feathers")
+	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "insect_type" = "Common Fly", "teshari_tail" = "Tail", "teshari_tailfeather" = "Tail Feathers", "teshari_footfeather" = "Foot Feathers", "teshari_handfeather" = "Hand Feathers", "teshari_modeye" = "Normal")
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -550,6 +550,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<h3>Hand Feathers</h3>"
 
 				dat += "<a href='?_src_=prefs;preference=teshari_handfeather;task=input'>[features["teshari_handfeather"]]</a><BR>"
+
+			if("teshari_modeye" in pref_species.default_features)
+				if(!mutant_category)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>Eyes</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=teshari_modeye;task=input'>[features["teshari_modeye"]]</a><BR>"
 
 				mutant_category++
 				if(mutant_category >= MAX_MUTANT_ROWS)
@@ -1663,6 +1671,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					if(new_teshari_handfeather)
 						features["teshari_handfeather"] = new_teshari_handfeather
+
+				if("teshari_modeye")
+					var/new_teshari_modeye
+
+					new_teshari_modeye = input(user, "Choose your character's eyes:", "Character Preference") as null|anything in GLOB.teshari_modeyes_list
+
+					if(new_teshari_modeye)
+						features["teshari_modeye"] = new_teshari_modeye
 
 				if("s_tone")
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
