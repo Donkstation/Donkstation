@@ -238,7 +238,7 @@
 		G.fields["name"]		= H.real_name
 		G.fields["rank"]		= assignment
 		G.fields["age"]			= H.age
-		G.fields["species"]	= H.dna.species.name
+		G.fields["species"]		= H.dna.species.name
 		G.fields["fingerprint"]	= rustg_hash_string(RUSTG_HASH_MD5, H.dna.uni_identity)
 		G.fields["p_stat"]		= "Active"
 		G.fields["m_stat"]		= "Stable"
@@ -253,6 +253,7 @@
 		M.fields["name"]		= H.real_name
 		M.fields["blood_type"]	= H.dna.blood_type
 		M.fields["b_dna"]		= H.dna.unique_enzymes
+		M.fields["species"]		= H.dna.species.name
 		M.fields["mi_dis"]		= "None"
 		M.fields["mi_dis_d"]	= "No minor disabilities have been declared."
 		M.fields["ma_dis"]		= "None"

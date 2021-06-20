@@ -329,6 +329,7 @@ Code:
 				menu += "Sex: [active1.fields["sex"]]<br>"
 				menu += "Age: [active1.fields["age"]]<br>"
 				menu += "Rank: [active1.fields["rank"]]<br>"
+				menu += "Species: [active1.fields["species"]]<br>"
 				menu += "Fingerprint: [active1.fields["fingerprint"]]<br>"
 				menu += "Physical Status: [active1.fields["p_stat"]]<br>"
 				menu += "Mental Status: [active1.fields["m_stat"]]<br>"
@@ -457,7 +458,7 @@ Code:
 			else
 				menu += "<b>No ore silo detected!</b>"
 			menu = jointext(menu, "")
-      
+
 		if (53) // Newscaster
 			menu = "<h4>[PDAIMG(notes)] Newscaster Access</h4>"
 			menu += "<br> Current Newsfeed: <A href='byond://?src=[REF(src)];choice=Newscaster Switch Channel'>[current_channel ? current_channel : "None"]</a> <br>"
