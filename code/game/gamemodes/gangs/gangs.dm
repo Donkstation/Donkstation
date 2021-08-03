@@ -7,8 +7,8 @@ GLOBAL_LIST_EMPTY(gangs)
 	config_tag = "gang"
 	antag_flag = ROLE_GANG
 	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security")
-	required_players = 30
-	required_enemies = 2
+	required_players = 1
+	required_enemies = 1
 	recommended_enemies = 3
 	enemy_minimum_age = 14
 
@@ -77,8 +77,8 @@ GLOBAL_LIST_EMPTY(gangs)
 		var/compare_territories = LAZYLEN(G.territories)
 		if (!winner || compare_territories > winner_territories || (compare_territories == winner_territories && G.victory_points > winner.victory_points))
 			winner = G
-			winner_territories = LAZYLEN(winner.territories) 
-		
+			winner_territories = LAZYLEN(winner.territories)
+
 	if (winner)
 		winner.winner = TRUE	//chicken dinner
 

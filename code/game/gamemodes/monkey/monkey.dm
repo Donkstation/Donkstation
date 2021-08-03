@@ -9,7 +9,7 @@
 	antag_flag = ROLE_MONKEY
 	false_report_weight = 1
 
-	required_players = 20
+	required_players = 1
 	required_enemies = 1
 	recommended_enemies = 1
 
