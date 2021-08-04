@@ -128,7 +128,7 @@
  */
 /datum/reality_smash_tracker/proc/Generate()
 	targets++
-	var/number = max(targets * ( 6 - (targets-1) ) - smashes,1)
+	var/number = max(targets * ( 5 - (targets-1) ) - smashes,1)
 
 	for(var/i in 0 to number)
 		var/turf/chosen_location = get_safe_random_station_turf()
