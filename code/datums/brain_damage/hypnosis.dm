@@ -39,6 +39,7 @@
 	message_admins("[ADMIN_LOOKUPFLW(owner)] is no longer hypnotized with the phrase '[hypnotic_phrase]'.")
 	log_game("[key_name(owner)] is no longer hypnotized with the phrase '[hypnotic_phrase]'.")
 	to_chat(owner, "<span class='userdanger'>You suddenly snap out of your hypnosis. The phrase '[hypnotic_phrase]' no longer feels important to you.</span>")
+	owner.visible_message("<span class='warning'>[owner] blinks rapidly.</span>")
 	owner.clear_alert("hypnosis")
 	..()
 
