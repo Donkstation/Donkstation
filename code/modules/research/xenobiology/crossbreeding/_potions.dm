@@ -68,36 +68,36 @@ Slimecrossing Potions
 
 //Love potion - Charged Pink
 /obj/item/slimepotion/lovepotion
-	name = "love potion"
-	desc = "A pink chemical mix thought to inspire feelings of love."
+	name = "awkward potion"
+	desc = "A pink chemical mix thought to make shit awkward."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "potpink"
 
 /obj/item/slimepotion/lovepotion/attack(mob/living/M, mob/user)
 	if(!isliving(M) || M.stat == DEAD)
-		to_chat(user, "<span class='warning'>The love potion only works on living things, sicko!</span>")
+		to_chat(user, "<span class='warning'>The dead can't feel awkward.</span>")
 		return ..()
 	if(istype(M, /mob/living/simple_animal/hostile/megafauna))
-		to_chat(user, "<span class='warning'>The love potion does not work on beings of pure evil!</span>")
+		to_chat(user, "<span class='warning'>This creature's size indicates it is already at maximum awkward.</span>")
 		return ..()
 	if(user == M)
-		to_chat(user, "<span class='warning'>You can't drink the love potion. What are you, a narcissist?</span>")
+		to_chat(user, "<span class='warning'>Drinking the potion would make things too awkward.</span>")
 		return ..()
-	if(M.has_status_effect(STATUS_EFFECT_INLOVE))
-		to_chat(user, "<span class='warning'>[M] is already lovestruck!</span>")
-		return ..()
+//	if(M.has_status_effect(STATUS_EFFECT_INLOVE))
+//		to_chat(user, "<span class='warning'>[M] is already lovestruck!</span>")
+//		return ..()
 
-	M.visible_message("<span class='danger'>[user] starts to feed [M] a love potion!</span>",
-		"<span class='userdanger'>[user] starts to feed you a love potion!</span>")
+	M.visible_message("<span class='danger'>[user] starts to feed [M] an awkward potion!</span>",
+		"<span class='userdanger'>[user] starts to feed you aan awkard potion!</span>")
 
 	if(!do_after(user, 50, target = M))
 		return
-	to_chat(user, "<span class='notice'>You feed [M] the love potion!</span>")
-	to_chat(M, "<span class='notice'>You develop feelings for [user], and anyone [user.p_they()] like.</span>")
+	to_chat(user, "<span class='notice'>You feed [M] the awkward potion!</span>")
+	to_chat(M, "<span class='notice'>You feel very awkward about [user].</span>")
 	if(M.mind)
-		M.mind.store_memory("You are in love with [user].")
-	M.faction |= "[REF(user)]"
-	M.apply_status_effect(STATUS_EFFECT_INLOVE, user)
+		M.mind.store_memory("[user] made you feel awkward.")
+//	M.faction |= "[REF(user)]"
+//	M.apply_status_effect(STATUS_EFFECT_INLOVE, user)
 	qdel(src)
 
 //Pressure potion - Charged Dark Blue
