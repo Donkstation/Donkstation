@@ -1,4 +1,4 @@
-/datum/species/abductor
+/datum/species/grey
 	name = "Grey"
 	id = "grey"
 	say_mod = "gibbers"
