@@ -506,6 +506,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
+			if("teshari_modeye" in pref_species.default_features) // todo: how can I put this where eyes usually are in customization, without fucking the rest of it up?
+				if(!mutant_category)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>Eyes</h3>"
+
+				//dat += "<a href='?_src_=prefs;preference=teshari_modeye;task=input'>[features["teshari_modeye"]]</a><BR>"
+
+				dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
+
+				mutant_category++
+				if(mutant_category >= MAX_MUTANT_ROWS)
+					dat += "</td>"
+					mutant_category = 0
+
 			if("teshari_tail" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -552,19 +567,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<h3>Hand Feathers</h3>"
 
 				dat += "<a href='?_src_=prefs;preference=teshari_handfeather;task=input'>[features["teshari_handfeather"]]</a><BR>"
-
-			if("teshari_modeye" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Eyes</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=teshari_modeye;task=input'>[features["teshari_modeye"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
 
 			if(CONFIG_GET(flag/join_with_mutant_humans))
 
