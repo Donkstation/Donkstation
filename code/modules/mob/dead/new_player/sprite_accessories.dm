@@ -2300,7 +2300,7 @@
 	icon_state = "dhfeat"
 
 /datum/sprite_accessory/teshari_modeyes
-	color_src = FACEHAIR // todo: make this uh. not beard color.
+	color_src = EYECOLOR
 	icon = 'icons/mob/teshari_parts.dmi'
 
 /datum/sprite_accessory/teshari_modeyes/default
