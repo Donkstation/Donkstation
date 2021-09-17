@@ -37504,6 +37504,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"cgt" = (
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/blobstart,
+/turf/open/floor/engine,
+/area/science/misc_lab)
 "cgu" = (
 /obj/structure/rack,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -55470,8 +55475,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
 	},
-/obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/blobstart,
+/obj/machinery/rnd/experimentor,
 /turf/open/floor/engine,
 /area/science/misc_lab)
 "pUr" = (
@@ -59985,7 +59989,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 5
 	},
-/obj/machinery/rnd/experimentor,
 /turf/open/floor/engine,
 /area/science/misc_lab)
 "vQH" = (
@@ -111456,7 +111459,7 @@ bXt
 caX
 lAi
 vPQ
-bTl
+cgt
 cbV
 bQZ
 cOe
