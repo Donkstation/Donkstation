@@ -30,6 +30,10 @@
 /datum/gear/hat/that
 	display_name = "tophat"
 	path = /obj/item/clothing/head/that
+	
+/datum/gear/hat/black_beret
+	display_name = "black beret"
+	path = /obj/item/clothing/head/beret/black
 
 /datum/gear/hat/red_beret
 	display_name = "red beret"
