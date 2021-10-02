@@ -892,6 +892,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Virology"
 	icon_state = "virology"
 	flags_1 = NONE
+	ambientsounds = list('sound/ambience/ambiviro1.ogg','sound/ambience/ambiviro2.ogg','sound/ambience/ambiviro3.ogg','sound/ambience/ambiviro4.ogg')
 
 /area/medical/morgue
 	name = "Morgue"
