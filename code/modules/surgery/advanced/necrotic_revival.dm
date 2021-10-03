@@ -1,7 +1,4 @@
-// REMOVED BY ZONESPACE
-// Admin team agrees we aren't looking for this to be as easily accessable as it is currently
 
-/*
 /datum/surgery/advanced/necrotic_revival
 	name = "Necrotic Revival"
 	desc = "An experimental surgical procedure that stimulates the growth of a Romerol tumor inside the patient's brain. Requires zombie powder or rezadone."
@@ -37,7 +34,7 @@
 		"[user] successfully grows a romerol tumor on [target]'s brain!",
 		"[user] completes the surgery on [target]'s brain.")
 	if(!target.getorganslot(ORGAN_SLOT_ZOMBIE))
-		var/obj/item/organ/zombie_infection/ZI = new()
+		var/obj/item/organ/zombie_infection/non_infectious/ZI = new()
 		ZI.Insert(target)
 	return TRUE
-*/
+

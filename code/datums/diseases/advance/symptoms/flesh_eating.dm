@@ -81,10 +81,7 @@ Bonus
 //////////////////////////////////////
 */
 
-// REMOVED BY ZONESPACE
-// Admin team agrees that we aren't looking for this in game currently
 
-/*
 /datum/symptom/flesh_death
 
 	name = "Autophagocytosis Necrosis"
@@ -148,7 +145,7 @@ Bonus
 	if(zombie)
 		if(ishuman(A.affected_mob))
 			if(!A.affected_mob.getorganslot(ORGAN_SLOT_ZOMBIE))
-				var/obj/item/organ/zombie_infection/ZI = new()
+				var/obj/item/organ/zombie_infection/non_infectious/ZI = new()
 				ZI.Insert(M)
 	return 1
-*/
+
