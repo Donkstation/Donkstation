@@ -49,7 +49,7 @@
 /datum/species/zombie/infectious/spec_life(mob/living/carbon/C)
 	. = ..()
 	C.a_intent = INTENT_HARM // THE SUFFERING MUST FLOW
-	
+
 	//Zombies never actually die, they just fall down until they regenerate enough to rise back up.
 	//They must be restrained, beheaded or gibbed to stop being a threat.
 	if(regen_cooldown < world.time)
@@ -60,7 +60,7 @@
 		C.adjustToxLoss(-heal_amt)
 	if(!C.InCritical() && prob(4))
 		playsound(C, pick(spooks), 50, TRUE, 10)
-		
+
 //Congrats you somehow died so hard you stopped being a zombie
 /datum/species/zombie/infectious/spec_death(gibbed, mob/living/carbon/C)
 	. = ..()
@@ -88,6 +88,10 @@
 	armor = 0
 	speedmod = 0
 	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
+
+/datum/species/zombie/infectious/non_infectious //Does this make no goddamn sense? Yes, but I want to keep the bits that infectious zombies get
+	name = "Weak Infectious Zombie"
+	mutanthands = null
 
 // Your skin falls off
 /datum/species/krokodil_addict

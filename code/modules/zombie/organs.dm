@@ -8,6 +8,7 @@
 	var/datum/species/old_species = /datum/species/human
 	var/living_transformation_time = 30
 	var/converts_living = FALSE
+	var/infectious_variant = TRUE
 
 	var/revive_time_min = 450
 	var/revive_time_max = 700
@@ -75,7 +76,10 @@
 
 	if(!iszombie(owner))
 		old_species = owner.dna.species.type
-		owner.set_species(/datum/species/zombie/infectious)
+		if(src.infectious_variant)
+			owner.set_species(/datum/species/zombie/infectious)
+		else
+			owner.set_species(/datum/species/zombie/infectious/non_infectious)
 
 	var/stand_up = (owner.stat == DEAD) || (owner.stat == UNCONSCIOUS)
 
@@ -84,15 +88,29 @@
 	owner.setOxyLoss(0, 0)
 	owner.heal_overall_damage(INFINITY, INFINITY, INFINITY, null, TRUE)
 
-	if(!owner.revive())
-		return
+	//if(!owner.revive())
+	//	return
 
 	owner.grab_ghost()
 	owner.visible_message("<span class='danger'>[owner] suddenly convulses, as [owner.p_they()][stand_up ? " stagger to [owner.p_their()] feet and" : ""] gain a ravenous hunger in [owner.p_their()] eyes!</span>", "<span class='alien'>You HUNGER!</span>")
 	playsound(owner.loc, 'sound/hallucinations/far_noise.ogg', 50, 1)
 	owner.do_jitter_animation(living_transformation_time)
-	owner.Stun(living_transformation_time)
-	to_chat(owner, "<span class='alertalien'>You are now a zombie! Do not seek to be cured, do not help any non-zombies in any way, do not harm your zombie brethren and spread the disease by killing others. You are a creature of hunger and violence.</span>")
+	owner.revive()
+	if(src.infectious_variant)
+		var/datum/browser/popup = new(owner, "antagTips", null, 600, 400)
+		to_chat(owner, "<span class='alertalien'>You are now a zombie! Do not seek to be cured, do not help any non-zombies in any way, do not harm your zombie brethren and spread the disease by killing others. You are a creature of hunger and violence.</span>")
+		popup.set_window_options("titlebar=1;can_minimize=0;can_resize=0")
+		popup.set_content(replacetext(rustg_file_read("html/antagtips/romerol_zombie.html"), regex("\\w*.png", "gm"), /datum/antagonist/proc/get_asset_url_from))
+		popup.open(FALSE)
+	else
+		var/datum/browser/popup = new(owner, "antagTips", null, 600, 400)
+		to_chat(owner, "<span class='alertalien'>You are now a zombie! You are NOT an antagonist, but do not harm your zombie brethren!</span>")
+		popup.set_window_options("titlebar=1;can_minimize=0;can_resize=0")
+		popup.set_content(replacetext(rustg_file_read("html/antagtips/romerol_zombie_nonantag.html"), regex("\\w*.png", "gm"), /datum/antagonist/proc/get_asset_url_from))
+		popup.open(FALSE)
 
 /obj/item/organ/zombie_infection/nodamage
 	causes_damage = FALSE
+
+/obj/item/organ/zombie_infection/non_infectious
+	infectious_variant = FALSE
