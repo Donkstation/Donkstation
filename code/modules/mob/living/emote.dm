@@ -193,30 +193,6 @@
 	message_param = "blows a kiss to %t"
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/laugh
-	key = "laugh"
-	key_third_person = "laughs"
-	message = "laughs"
-	message_mime = "laughs silently"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-
-/datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
-	. = ..()
-	if(. && iscarbon(user))
-		var/mob/living/carbon/C = user
-		return !C.silent
-
-/datum/emote/living/laugh/get_sound(mob/living/user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/human_laugh = ishumanbasic(H) || iscatperson(H)
-		if(human_laugh && (!H.mind || !H.mind.miming))
-			if(user.gender == FEMALE)
-				return 'sound/voice/human/womanlaugh.ogg'
-			else
-				return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
-
 /datum/emote/living/look
 	key = "look"
 	key_third_person = "looks"

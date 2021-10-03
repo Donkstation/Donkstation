@@ -1,7 +1,7 @@
-#define CHALLENGE_TELECRYSTALS 280
-#define CHALLENGE_TIME_LIMIT 3000
-#define CHALLENGE_MIN_PLAYERS 50
+#define CHALLENGE_TIME_LIMIT 4500
+#define CHALLENGE_MIN_PLAYERS 25
 #define CHALLENGE_SHUTTLE_DELAY 15000 // 25 minutes, so the ops have at least 5 minutes before the shuttle is callable.
+#define CHALLENGE_TELECRYSTALS 200
 
 /obj/item/nuclear_challenge
 	name = "Declaration of War (Challenge Mode)"

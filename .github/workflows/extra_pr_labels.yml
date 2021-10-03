@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for conflicting PRs
-        uses: eps1lon/actions-label-merge-conflict@513a24fc7dca40990863be2935e059e650728400
+        uses: donkstation/actions-label-merge-conflict@513a24fc7dca40990863be2935e059e650728400
         with:
           dirtyLabel: "Merge Conflict"
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          commentOnDirty: "This pull request has conflicts, please resolve those before we can evaluate the pull request."
+          commentOnDirty: "This pull request has conflicts, please resolve those before the Pull Request can be reviewed."
       - name: Apply labels based on changed files
         if: github.event_name != 'push'
-        uses: actions/labeler@main
+        uses: donkstation/labeler@main
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           sync-labels: true

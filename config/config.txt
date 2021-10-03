@@ -252,7 +252,7 @@ WIKIURL https://wiki.beestation13.com/view
 RULESURL https://beestation13.com/rules
 
 ## Github address
-GITHUBURL https://www.github.com/beestation/beestation-hornet
+GITHUBURL https://github.com/Donkstation/Donkstation
 
 ## Label to tag ingame-registered issues with.
 ## Uncomment this to enable them.
@@ -262,7 +262,7 @@ GITHUBURL https://www.github.com/beestation/beestation-hornet
 DONATEURL https://www.patreon.com/user?u=10639001
 
 ## Discord Invite
-DISCORDURL https://discord.gg/zUe34rs
+DISCORDURL https://discord.gg/TpDAEcPvKR
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()

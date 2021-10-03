@@ -37,6 +37,9 @@
 	var/shown_robot_modules = 0	//Used to determine whether they have the module menu shown or not
 	var/atom/movable/screen/robot_modules_background
 
+//Cyborg Objective Updates
+	var/busystatus = 0 //OCCUPADO, PLEASE HOLD
+
 //3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module = null
 	var/obj/item/module_active = null
@@ -327,6 +330,9 @@
 			tab_data["[st.name]"] = GENERATE_STAT_TEXT("[st.energy]/[st.max_energy]")
 	if(connected_ai)
 		tab_data["Master AI"] = GENERATE_STAT_TEXT("[connected_ai.name]")
+		for(var/mob/living/silicon/ai/AI) //I don't understand why this needs to be under For, but it does. 
+			tab_data["[AI.objectivesconfirm] priority A.I Objective"] = GENERATE_STAT_TEXT("[AI.objectiveupdate]") //What are your Orders Master A.I?
+			tab_data["Busy Flag"] = GENERATE_STAT_TEXT("[busystatus ? "Utilized" : "Standing-by"]")
 	return tab_data
 
 /mob/living/silicon/robot/restrained(ignore_grab)
@@ -1262,3 +1268,29 @@
 		cell.charge = min(cell.charge + amount, cell.maxcharge)
 	if(repairs)
 		heal_bodypart_damage(repairs, repairs - 1)
+
+/mob/living/silicon/robot/proc/objectivesupdate()
+	var/mob/living/silicon/ai/AI
+	busystatus = 1
+	playsound(loc, 'sound/machines/chime.ogg', 25, 0)
+	to_chat(usr, "<span class='notice'>A.I Assigned Objective Updated. [AI.objectivesconfirm] Priority objective recieved as follows: [AI.objectiveupdate] </span>") //Objectives Updated, standby for Emergency Procedures. BEEEEP, BEEEP
+
+
+/mob/living/silicon/robot/verb/togglebusy()
+	set category = "Robot Commands"
+	set name = "Toggle Flag"
+	set desc = "Toggle your busy flag off/online to indicate your status to your A.I"
+	busystatus = !busystatus
+	playsound(loc, 'sound/machines/ding.ogg', 25)
+	to_chat(usr, "<span class='notice'>Flag Toggled [busystatus ? "Offline, unavailable for lowpriority tasking." : "Online, ready for assignment."]</span>")
+
+/mob/living/silicon/robot/verb/setobjective()
+	set category = "Robot Commands"
+	set name = "Set Current Objective"
+	set desc = "Set your current objective, will display to your A.I"
+	switch(alert("Are you sure you want to set a custom A.I Objective? This will override your previous task.", "Confirm", "Yes", "No"))
+		if("Yes")
+			for(var/mob/living/silicon/ai/AI in GLOB.alive_mob_list)
+				AI.objectiveupdate = input(src, "What is your current objective, this will be displayed to your A.I.","Update Objective")
+				busystatus = 1
+				to_chat(usr, "<span class='notice'>A.I Assigned Objective Updated. Objective set as follows: [AI.objectiveupdate] </span>")
