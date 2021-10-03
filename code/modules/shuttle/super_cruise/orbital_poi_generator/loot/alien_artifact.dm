@@ -291,7 +291,6 @@ GLOBAL_LIST_EMPTY(destabliization_exits)
 		return
 	if(QDELETED(AM))
 		return
-	var/area/A = get_area(AM)
 	//already left the tear.
 	if(!istype(AM, /area/tear_in_reality))
 		return

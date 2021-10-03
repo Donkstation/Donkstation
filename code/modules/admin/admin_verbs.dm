@@ -529,13 +529,17 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		if(null)
 			return 0
 		if("Small Bomb (1, 2, 3, 3)")
-			explosion(epicenter, 1, 2, 3, 3, TRUE, TRUE)
+			if(alert(mob, "Are you sure you want to drop a Small Bomb?", "Confirmation", "Yes", "No") == "Yes")
+				explosion(epicenter, 1, 2, 3, 3, TRUE, TRUE)
 		if("Medium Bomb (2, 3, 4, 4)")
-			explosion(epicenter, 2, 3, 4, 4, TRUE, TRUE)
+			if(alert(mob, "Are you sure you want to drop a Medium Bomb?", "Confirmation", "Yes", "No") == "Yes")
+				explosion(epicenter, 2, 3, 4, 4, TRUE, TRUE)
 		if("Big Bomb (3, 5, 7, 5)")
-			explosion(epicenter, 3, 5, 7, 5, TRUE, TRUE)
+			if(alert(mob, "Are you sure you want to drop a Large Bomb?", "Confirmation", "Yes", "No") == "Yes")
+				explosion(epicenter, 3, 5, 7, 5, TRUE, TRUE)
 		if("Maxcap")
-			explosion(epicenter, GLOB.MAX_EX_DEVESTATION_RANGE, GLOB.MAX_EX_HEAVY_RANGE, GLOB.MAX_EX_LIGHT_RANGE, GLOB.MAX_EX_FLASH_RANGE)
+			if(alert(mob, "Are you sure you want to drop a Maxcap Bomb?", "Confirmation", "Yes", "No") == "Yes")
+				explosion(epicenter, GLOB.MAX_EX_DEVESTATION_RANGE, GLOB.MAX_EX_HEAVY_RANGE, GLOB.MAX_EX_LIGHT_RANGE, GLOB.MAX_EX_FLASH_RANGE)
 		if("Custom Bomb")
 			var/devastation_range = input("Devastation range (in tiles):") as null|num
 			if(devastation_range == null)
@@ -551,6 +555,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 				return
 			if(devastation_range > GLOB.MAX_EX_DEVESTATION_RANGE || heavy_impact_range > GLOB.MAX_EX_HEAVY_RANGE || light_impact_range > GLOB.MAX_EX_LIGHT_RANGE || flash_range > GLOB.MAX_EX_FLASH_RANGE)
 				if(alert("Bomb is bigger than the maxcap. Continue?",,"Yes","No") != "Yes")
+					return
+			else
+				if(alert(mob, "Are you sure you want to drop a bomb (Size: [devastation_range], [heavy_impact_range], [light_impact_range], [flash_range])?", "Confirmation", "Yes", "No") == "No")
 					return
 			epicenter = mob.loc //We need to reupdate as they may have moved again
 			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, TRUE, TRUE)

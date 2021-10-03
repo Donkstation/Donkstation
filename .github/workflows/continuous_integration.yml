@@ -1,7 +1,6 @@
 name: Run tests
 
 on:
-  workflow_dispatch:
   push:
     paths-ignore:
     - 'html/changelogs/**'
@@ -16,10 +15,10 @@ jobs:
   run_linters:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: donkstation/checkout@v2
       - name: Setup cache
         id: cache-spacemandmm
-        uses: actions/cache@v2
+        uses: donkstation/cache@v2
         with:
           path: ~/dreamchecker
           key: ${{ runner.os }}-spacemandmm-cache-${{ hashFiles('dependencies.sh') }}
@@ -46,10 +45,10 @@ jobs:
   compile_all_maps:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: donkstation/checkout@v2
       - name: Setup cache
         id: cache-byond
-        uses: actions/cache@v2
+        uses: donkstation/cache@v2
         with:
           path: ~/BYOND
           key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
@@ -72,10 +71,10 @@ jobs:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v2
+      - uses: donkstation/checkout@v2
       - name: Setup cache
         id: cache-byond
-        uses: actions/cache@v2
+        uses: donkstation/cache@v2
         with:
           path: ~/BYOND
           key: ${{ runner.os }}-byond-cache-${{ hashFiles('Dockerfile') }}
@@ -104,7 +103,7 @@ jobs:
   test_windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: donkstation/checkout@v2
       - name: Compile
         run: pwsh tools/ci/build.ps1
         env:

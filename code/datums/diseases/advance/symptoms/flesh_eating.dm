@@ -81,6 +81,10 @@ Bonus
 //////////////////////////////////////
 */
 
+// REMOVED BY ZONESPACE
+// Admin team agrees that we aren't looking for this in game currently
+
+/*
 /datum/symptom/flesh_death
 
 	name = "Autophagocytosis Necrosis"
@@ -147,3 +151,4 @@ Bonus
 				var/obj/item/organ/zombie_infection/ZI = new()
 				ZI.Insert(M)
 	return 1
+*/

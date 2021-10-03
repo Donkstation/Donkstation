@@ -315,11 +315,11 @@
 		switch(fitting)
 			if("tube")
 				brightness = A.lighting_brightness_tube
-				if(prob(2))
+				if(prob(1))
 					break_light_tube(1)
 			if("bulb")
 				brightness = A.lighting_brightness_bulb
-				if(prob(5))
+				if(prob(2))
 					break_light_tube(1)
 		spawn(1)
 			update(0)
@@ -391,7 +391,7 @@
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
 					explode()
-			else if( prob( min(60, (switchcount**2)*0.01) ) )
+			else if( prob( min(30, (switchcount**1.8)*0.01) ) )
 				if(trigger)
 					burn_out()
 			else
