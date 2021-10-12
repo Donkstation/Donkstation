@@ -1,10 +1,7 @@
-// REMOVED BY ZONESPACE
-// Admin team agrees we aren't looking for this to be as easily accessable as it is currently
 
-/*
 /datum/surgery/advanced/necrotic_revival
 	name = "Necrotic Revival"
-	desc = "An experimental surgical procedure that stimulates the growth of a Romerol tumor inside the patient's brain. Requires zombie powder or rezadone."
+	desc = "An experimental surgical procedure that stimulates the growth of a weak Romerol tumor inside the patient's brain. Requires zombie powder or rezadone."
 	steps = list(/datum/surgery_step/incise,
 				/datum/surgery_step/retract_skin,
 				/datum/surgery_step/saw,
@@ -28,16 +25,16 @@
 	require_all_chems = FALSE
 
 /datum/surgery_step/bionecrosis/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to grow a romerol tumor on [target]'s brain...</span>",
+	display_results(user, target, "<span class='notice'>You begin to grow a weakened romerol tumor on [target]'s brain...</span>",
 		"[user] begins to tinker with [target]'s brain...",
 		"[user] begins to perform surgery on [target]'s brain.")
 
 /datum/surgery_step/bionecrosis/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You succeed in growing a romerol tumor on [target]'s brain.</span>",
+	display_results(user, target, "<span class='notice'>You succeed in growing a weakened romerol tumor on [target]'s brain.</span>",
 		"[user] successfully grows a romerol tumor on [target]'s brain!",
 		"[user] completes the surgery on [target]'s brain.")
 	if(!target.getorganslot(ORGAN_SLOT_ZOMBIE))
-		var/obj/item/organ/zombie_infection/ZI = new()
+		var/obj/item/organ/zombie_infection/non_infectious/ZI = new()
 		ZI.Insert(target)
 	return TRUE
-*/
+

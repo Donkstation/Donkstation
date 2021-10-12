@@ -81,10 +81,7 @@ Bonus
 //////////////////////////////////////
 */
 
-// REMOVED BY ZONESPACE
-// Admin team agrees that we aren't looking for this in game currently
 
-/*
 /datum/symptom/flesh_death
 
 	name = "Autophagocytosis Necrosis"
@@ -136,7 +133,7 @@ Bonus
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			var/S = H.dna.species
-			if(zombie && istype(S, /datum/species/zombie/infectious) && !istype(S, /datum/species/zombie/infectious/fast))
+			if(zombie && istype(S, /datum/species/zombie/infectious) && !istype(S, /datum/species/zombie/infectious/fast) && !istype(S, /datum/species/zombie/infectious/non_infectious))
 				H.set_species(/datum/species/zombie/infectious/fast)
 				to_chat(M, "<span class='warning'>Your extraneous flesh sloughs off, giving you a boost of speed at the cost of a bit of padding!</span>")
 			else if(prob(base_message_chance))
@@ -148,7 +145,7 @@ Bonus
 	if(zombie)
 		if(ishuman(A.affected_mob))
 			if(!A.affected_mob.getorganslot(ORGAN_SLOT_ZOMBIE))
-				var/obj/item/organ/zombie_infection/ZI = new()
+				var/obj/item/organ/zombie_infection/non_infectious/ZI = new()
 				ZI.Insert(M)
 	return 1
-*/
+
