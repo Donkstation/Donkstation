@@ -283,7 +283,6 @@
 
 /obj/item/organ/tongue/robot/clockwork/better/handle_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
-	speech_args[SPEECH_SPANS] |= SPAN_REALLYBIG  //yes, this is a really really good idea, trust me
 
 /obj/item/organ/brain/clockwork
 	name = "enigmatic gearbox"
