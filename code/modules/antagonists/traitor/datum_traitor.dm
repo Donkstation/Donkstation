@@ -232,7 +232,7 @@
 			show_tips("traitor")
 			if(should_equip)
 				equip(silent)
-			var/obj/item/implant/radio/syndicate/I = new /obj/item/implant/radio/syndicate()
+			var/obj/item/implant/radio/syndicate/I = new /obj/item/implant/radio/syndicate/limited()
 			I.implant(owner.current, null, TRUE, TRUE)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 

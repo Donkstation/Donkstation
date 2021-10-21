@@ -289,6 +289,23 @@
 				deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has messaged CentCom, \"[input]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 				CM.lastTimeUsed = world.time
 
+		if("RequestERT")
+			if(authenticated)
+				if(!checkCCcooldown())
+					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by.</span>")
+					return
+				if(get_dist(usr, src) > 1)
+					return
+				if(alert("Are you sure you want to request an ERT squad?","Confirm","Yes","No") != "Yes")
+					return
+				var/input = stripped_input(usr, "Please any additional information or reasoning that CentCom may require. Note this does not guarantee a response.", "Please enter neccessary information.", "")
+				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+				CentCom_announce("[usr] is requesting an ERT squad, with the reason: [input].", usr)
+				to_chat(usr, "<span class='notice'>Emergency Response Team request transmitted to Central Command.</span>")
+				usr.log_talk(input, LOG_SAY, tag="CentCom announcement")
+				deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has requested an ERT squad from CentCom, with the message, \"[input]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
+				CM.lastTimeUsed = world.time
+
 		// OMG SYNDICATE ...LETTERHEAD
 		if("MessageSyndicate")
 			if((authenticated) && (obj_flags & EMAGGED))
@@ -478,6 +495,7 @@
 					dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=changeseclevel'>Change Alert Level</A> \]"
 					dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=emergencyaccess'>Emergency Maintenance Access</A> \]"
 					dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=nukerequest'>Request Nuclear Authentication Codes</A> \]"
+					dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=RequestERT'>Request Emergency Response Team</A> \]"
 					if(!(obj_flags & EMAGGED))
 						dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=MessageCentCom'>Send Message to CentCom</A> \]"
 					else

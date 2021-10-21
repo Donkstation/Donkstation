@@ -1980,7 +1980,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(H.buckled)
 		buckled_obj = H.buckled
 
-	to_chat(H, "<span class='notice'>Your wings spazz out and launch you!</span>")
+	to_chat(H, "<span class='notice'>Your lose control of your wings and they launch you!</span>")
 
 	for(var/obj/item/I in H.held_items)
 		H.accident(I)

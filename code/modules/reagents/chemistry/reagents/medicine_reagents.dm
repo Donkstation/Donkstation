@@ -639,7 +639,7 @@
 	if(prob(20) && iscarbon(M))
 		var/obj/item/I = M.get_active_held_item()
 		if(I && M.dropItemToGround(I))
-			to_chat(M, "<span class ='notice'>Your hands spaz out and you drop what you were holding!</span>")
+			to_chat(M, "<span class ='notice'>Your hands are too shaky and you drop what you were holding!</span>")
 			M.Jitter(10)
 
 	M.AdjustAllImmobility(-20, FALSE)

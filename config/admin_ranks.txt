@@ -98,3 +98,8 @@ Name = CouncilMember
 Include = EVERYTHING
 Exclude =
 Edit = EVERYTHING
+
+Name = Mentmin
+Include = POLL SERVER FUN DEBUG ADMIN STEALTH VAREDIT SPAWN BUILD BAN
+Exclude =
+Edit =

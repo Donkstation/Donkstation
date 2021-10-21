@@ -1839,8 +1839,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/implants/radio
 	name = "Internal Syndicate Radio Implant"
 	desc = "An implant injected into the body, allowing the use of an internal Syndicate radio. \
+			Has the Syndicate channel along with all on-station channels. \
 			Used just like a regular headset, but can be disabled to use external headsets normally and to avoid detection. \
-			You should already have one implanted in you, though."
+			You do have a syndicate-channel only one implanted in you, though."
 	item = /obj/item/storage/box/syndie_kit/imp_radio
 	cost = 4
 	exclude_modes = list(/datum/game_mode/incursion) //To prevent traitors from immediately outing the hunters to security.

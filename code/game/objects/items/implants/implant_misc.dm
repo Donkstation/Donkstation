@@ -142,6 +142,9 @@
 	radio_key = /obj/item/encryptionkey/syndicate
 	subspace_transmission = TRUE
 
+/obj/item/implant/radio/syndicate/limited
+	radio_key = /obj/item/encryptionkey/syndicate/limited
+
 /obj/item/implant/radio/slime
 	name = "slime radio"
 	icon = 'icons/obj/surgery.dmi'

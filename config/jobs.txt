@@ -46,4 +46,4 @@ Brig Physician=1,1
 Deputy=0,0
 
 AI=1,1
-Cyborg=1,1
+Cyborg=2,2

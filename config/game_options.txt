@@ -16,7 +16,7 @@ REVIVAL_BRAIN_LIFE -1
 
 ## OOC DURING ROUND ###
 ## Comment this out if you want OOC to be automatically disabled during the round, it will be enabled during the lobby and after the round end results.
-#OOC_DURING_ROUND
+OOC_DURING_ROUND
 
 ## LOOC
 ## Comment this out to disable LOOC
@@ -63,10 +63,10 @@ HUMANS_NEED_SURNAMES
 #FORCE_RANDOM_NAMES
 
 ## Unhash this to turn on automatic reopening of a player's job if they suicide at roundstart
-#REOPEN_ROUNDSTART_SUICIDE_ROLES
+REOPEN_ROUNDSTART_SUICIDE_ROLES
 
 ## Unhash to enable reopening of command level positions
-#REOPEN_ROUNDSTART_SUICIDE_ROLES_COMMAND_POSITIONS
+REOPEN_ROUNDSTART_SUICIDE_ROLES_COMMAND_POSITIONS
 
 ## Define the delay for roles to be reopened after the round starts in seconds.
 ## Has a minimum delay of 30 seconds, though it's suggested to keep over 1 min
@@ -74,7 +74,7 @@ HUMANS_NEED_SURNAMES
 #REOPEN_ROUNDSTART_SUICIDE_ROLES_DELAY 240
 
 ## Unhash to enable a printed command report for reopened roles listing what roles were reopened.
-#REOPEN_ROUNDSTART_SUICIDE_ROLES_COMMAND_REPORT
+REOPEN_ROUNDSTART_SUICIDE_ROLES_COMMAND_REPORT
 
 
 ## ALERT LEVELS ###
@@ -90,7 +90,7 @@ ALERT_DELTA Destruction of the station is imminent. All crew are instructed to o
 ## GAME MODES ###
 
 #Set the Master (Default) Game Mode.
-MASTER_MODE secret_extended
+MASTER_MODE extended
 
 ## Uncomment to not send a roundstart intercept report. Gamemodes may override this.
 NO_INTERCEPT_REPORT
@@ -101,15 +101,15 @@ NO_INTERCEPT_REPORT
 
 PROBABILITY DYNAMIC 9
 PROBABILITY TRAITOR 8
-PROBABILITY CULT 6
+PROBABILITY CULT 1
 PROBABILITY TRAITORCHAN 5
 PROBABILITY CHANGELING 5
-PROBABILITY REVOLUTION 4
+PROBABILITY REVOLUTION 0
 PROBABILITY INCURSION 4
 PROBABILITY NUCLEAR 4
-PROBABILITY CLOCKCULT 2
-PROBABILITY SECRET_EXTENDED 1
-PROBABILITY CLOWNOPS 0
+PROBABILITY CLOCKCULT 1
+PROBABILITY SECRET_EXTENDED 0
+PROBABILITY CLOWNOPS 2
 PROBABILITY DEVIL 0
 PROBABILITY DEVIL_AGENTS 0
 PROBABILITY GANG 0
@@ -117,8 +117,8 @@ PROBABILITY HERESY 0
 PROBABILITY INTERNAL_AFFAIRS 0
 PROBABILITY METEOR 0
 PROBABILITY MONKEY 0
-PROBABILITY TRAITORBRO 0
-PROBABILITY WIZARD 0
+PROBABILITY TRAITORBRO 3
+PROBABILITY WIZARD 2
 
 ## Creates issues when NO_INTERCEPT_REPORT is enabled
 PROBABILITY EXTENDED 0
@@ -140,12 +140,12 @@ CONTINUOUS INCURSION
 CONTINUOUS INTERNAL_AFFAIRS
 #CONTINUOUS NUCLEAR
 #CONTINUOUS REVOLUTION
-CONTINUOUS CULT
+#CONTINUOUS CULT
 CONTINUOUS CHANGELING
 CONTINUOUS WIZARD
 #CONTINUOUS MONKEY
 CONTINUOUS HIVEMIND
-CONTINUOUS CLOCKCULT
+#CONTINUOUS CLOCKCULT
 CONTINUOUS HERESY
 
 #Prevents the death of round-ending antagonist rulesets ending the round immediately.
@@ -165,13 +165,13 @@ CONTINUOUS SECRET_EXTENDED
 MIDROUND_ANTAG TRAITOR
 #MIDROUND_ANTAG INCURSION
 #MIDROUND_ANTAG TRAITORBRO
-#MIDROUND_ANTAG TRAITORCHAN
-#MIDROUND_ANTAG INTERNAL_AFFAIRS
+MIDROUND_ANTAG TRAITORCHAN
+MIDROUND_ANTAG INTERNAL_AFFAIRS
 #MIDROUND_ANTAG  NUCLEAR
 #MIDROUND_ANTAG  REVOLUTION
 #MIDROUND_ANTAG CULT
-#MIDROUND_ANTAG CHANGELING
-#MIDROUND_ANTAG WIZARD
+MIDROUND_ANTAG CHANGELING
+MIDROUND_ANTAG WIZARD
 #MIDROUND_ANTAG  MONKEY
 
 ## Uncomment these for overrides of the minimum / maximum number of players in a round type.
@@ -246,7 +246,7 @@ ECULT_SCALING_COEFF 6
 ## Variables calculate how number of open security officer positions will scale to population.
 ## Used as (Officers = Population / Coeff)
 ## Set to 0 to disable scaling and use default numbers instead.
-SECURITY_SCALING_COEFF 6
+SECURITY_SCALING_COEFF 5
 
 ## The number of objectives traitors get.
 ## Not including escaping/hijacking.
@@ -329,11 +329,11 @@ ALLOW_AI_MULTICAM
 
 ## Secborg ###
 ## Uncomment to prevent the security cyborg module from being chosen
-#DISABLE_SECBORG
+DISABLE_SECBORG
 
 ## Peacekeeper Borg ###
 ## Uncomment to prevent the peacekeeper cyborg module from being chosen
-#DISABLE_PEACEBORG
+DISABLE_PEACEBORG
 
 ## AWAY MISSIONS ###
 
@@ -359,7 +359,7 @@ MINIMAL_ACCESS_THRESHOLD 20
 #JOBS_HAVE_MINIMAL_ACCESS
 
 ## Uncomment to give assistants maint access.
-#ASSISTANTS_HAVE_MAINT_ACCESS
+ASSISTANTS_HAVE_MAINT_ACCESS
 
 ## Uncoment to give security maint access. Note that if you dectivate JOBS_HAVE_MINIMAL_ACCESS security already gets maint from that.
 SECURITY_HAS_MAINT_ACCESS
@@ -368,7 +368,7 @@ SECURITY_HAS_MAINT_ACCESS
 EVERYONE_HAS_MAINT_ACCESS
 
 ## Comment this out this to make security officers spawn in departmental security posts
-SEC_START_BRIG
+#SEC_START_BRIG
 
 
 ## GHOST INTERACTION ###
@@ -412,8 +412,8 @@ RANDOM_LAWS robocop
 RANDOM_LAWS corporate
 
 ## Quirky laws. Shouldn't cause too much harm
-#RANDOM_LAWS hippocratic
-#RANDOM_LAWS maintain
+RANDOM_LAWS hippocratic
+RANDOM_LAWS maintain
 #RANDOM_LAWS drone
 #RANDOM_LAWS liveandletlive
 #RANDOM_LAWS peacekeeper
@@ -487,7 +487,7 @@ ROUNDSTART_RACES squid
 ROUNDSTART_RACES ethereal
 ROUNDSTART_RACES apid
 ROUNDSTART_RACES oozeling
-#ROUNDSTART_RACES jelly
+ROUNDSTART_RACES jelly
 #ROUNDSTART_RACES shadow
 ROUNDSTART_RACES plasmaman
 #ROUNDSTART_RACES iron_golem
@@ -502,9 +502,9 @@ ROUNDSTART_RACES abductor
 ROUNDSTART_RACES ipc
 
 ## Races that are straight upgrades. If these are on expect powergamers to always pick them
-#ROUNDSTART_RACES skeleton
+ROUNDSTART_RACES skeleton
 #ROUNDSTART_RACES zombie
-#ROUNDSTART_RACES slime
+ROUNDSTART_RACES slime
 ROUNDSTART_RACES pod
 #ROUNDSTART_RACES military_synth
 #ROUNDSTART_RACES agent
@@ -531,7 +531,7 @@ OVERFLOW_CAP -1
 STARLIGHT
 
 ## Uncomment to bring back old grey suit assistants instead of the now default rainbow colored assistants.
-GREY_ASSISTANTS
+#GREY_ASSISTANTS
 
 ## Midround Antag (aka Mulligan antag) config options ###
 
@@ -603,7 +603,7 @@ ROUNDSTART_TRAITS
 #DISABLE_HUMAN_MOOD
 
 ## Enable night shifts ##
-ENABLE_NIGHT_SHIFTS
+#ENABLE_NIGHT_SHIFTS
 
 ## Enable randomized shift start times##
 RANDOMIZE_SHIFT_TIME
@@ -626,7 +626,7 @@ MAX_CHICKENS 100
 MAX_SLIMES 100
 
 ## Max amount of bodies allowed to slimepeople. Has balance considerations as well as technical ones.
-MAX_SLIMEPERSON_BODIES 10
+MAX_SLIMEPERSON_BODIES 3
 
 ## Uncomment to restrict suiciding. Adds an additional confirmation dialogue, additional logging, and prevents suicide within the first 15 minutes of the round.
 RESTRICTED_SUICIDE
@@ -635,4 +635,4 @@ RESTRICTED_SUICIDE
 #DONATOR_ITEMS
 
 ## Do we want all the heads to get codes to spare safe, or just one highest in CoC?
-SPARE_ENFORCE_COC
+#SPARE_ENFORCE_COC
