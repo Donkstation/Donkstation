@@ -33,6 +33,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_SECURITY
 	departments = DEPARTMENT_SECURITY | DEPARTMENT_COMMAND
+	
+/datum/job/hos/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "headofsecurity")
 
 /datum/outfit/job/hos
 	name = "Head of Security"

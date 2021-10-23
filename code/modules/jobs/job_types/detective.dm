@@ -26,6 +26,10 @@
 	display_order = JOB_DISPLAY_ORDER_DETECTIVE
 	departments = DEPARTMENT_SECURITY
 
+/datum/job/detective/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "detective")
+
 /datum/outfit/job/detective
 	name = "Detective"
 	jobtype = /datum/job/detective

@@ -32,6 +32,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
 	departments = DEPARTMENT_ENGINEERING | DEPARTMENT_COMMAND
+	
+/datum/job/chief_engineer/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "chiefengineer")
 
 /datum/outfit/job/ce
 	name = "Chief Engineer"

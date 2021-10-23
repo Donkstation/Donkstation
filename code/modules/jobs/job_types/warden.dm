@@ -31,6 +31,10 @@
 	L = ..() | check_config_for_sec_maint()
 	return L
 
+/datum/job/warden/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "warden")
+
 /datum/outfit/job/warden
 	name = "Warden"
 	jobtype = /datum/job/warden

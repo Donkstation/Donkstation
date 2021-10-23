@@ -30,7 +30,11 @@
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER
 	departments = DEPARTMENT_MEDICAL | DEPARTMENT_COMMAND
-
+	
+/datum/job/cmo/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "chiefmedicalofficer")
+	
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
 	jobtype = /datum/job/cmo

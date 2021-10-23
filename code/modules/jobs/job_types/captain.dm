@@ -34,6 +34,10 @@
 /datum/job/captain/announce(mob/living/carbon/human/H)
 	..()
 	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Captain [H.real_name] on deck!"))
+	
+/datum/job/captain/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "captain")
 
 /datum/outfit/job/captain
 	name = "Captain"
