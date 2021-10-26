@@ -980,10 +980,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	if(prob(50) && antag_type)
 		switch(antag_type)
 			if("traitor") objective = pick(world.file2list("strings/objectives/antag/traitor.txt"))
-			//uncomment these when they have objectives
-			//if("wizard") objective = pick(world.file2list("strings/objectives/antag/wizard.txt"))
-			//if("changeling") objective = pick(world.file2list("strings/objectives/antag/changeling.txt"))
-			//if("BloodBrother") objective = pick(world.file2list("strings/objectives/antag/BloodBrother.txt"))
+			if("wizard") objective = pick(world.file2list("strings/objectives/antag/wizard.txt"))
+			if("changeling") objective = pick(world.file2list("strings/objectives/antag/changeling.txt"))
+			if("BloodBrother") objective = pick(world.file2list("strings/objectives/antag/BloodBrother.txt"))
 	if(!objective) objective = pick(world.file2list("strings/objectives/antag/general.txt"))
 	explanation_text = "[objective] <I>This objective auto-completes, so just have fun!</I>"
 	..()
