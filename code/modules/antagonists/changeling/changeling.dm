@@ -399,6 +399,10 @@
 			steal_objective.find_target()
 			objectives += steal_objective
 			log_objective(owner, steal_objective.explanation_text)
+		else if(prob(50))
+			var/datum/objective/auto_complete/idea = new(null, "changeling")
+			objectives += idea
+			log_objective(owner, idea.explanation_text)
 		else
 			var/datum/objective/download/download_objective = new
 			download_objective.owner = owner

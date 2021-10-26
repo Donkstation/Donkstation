@@ -77,7 +77,7 @@
 				objectives += escape_objective
 				log_objective(owner, escape_objective.explanation_text)
 
-		if(31 to 60)
+		if(31 to 40)
 			var/datum/objective/steal/steal_objective = new
 			steal_objective.owner = owner
 			steal_objective.find_target()
@@ -89,7 +89,10 @@
 				escape_objective.owner = owner
 				objectives += escape_objective
 				log_objective(owner, escape_objective.explanation_text)
-
+		if(41 to 60)
+			var/datum/objective/auto_complete/idea = new(null, "wizard")
+			objectives += idea
+			log_objective(owner, idea.explanation_text)
 		if(61 to 85)
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner

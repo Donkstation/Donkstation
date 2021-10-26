@@ -972,6 +972,22 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 				stolen_count++
 	return stolen_count >= 5
 
+/datum/objective/auto_complete
+	name="auto complete"
+
+/datum/objective/auto_complete/New(text, antag_type = null)
+	var/objective
+	if(prob(50) && antag_type)
+		switch(antag_type)
+			if("traitor") objective = pick(world.file2list("strings/objectives/antag/traitor.txt"))
+			//uncomment these when they have objectives
+			//if("wizard") objective = pick(world.file2list("strings/objectives/antag/wizard.txt"))
+			//if("changeling") objective = pick(world.file2list("strings/objectives/antag/changeling.txt"))
+			//if("BloodBrother") objective = pick(world.file2list("strings/objectives/antag/BloodBrother.txt"))
+	if(!objective) objective = pick(world.file2list("strings/objectives/antag/general.txt"))
+	explanation_text = "[objective] <I>This objective auto-completes, so just have fun!</I>"
+	..()
+
 //Created by admin tools
 /datum/objective/custom
 	name = "custom"
@@ -1000,6 +1016,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		/datum/objective/nuclear,
 		/datum/objective/capture,
 		/datum/objective/absorb,
+		/datum/objective/auto_complete,
 		/datum/objective/custom
 	),/proc/cmp_typepaths_asc)
 

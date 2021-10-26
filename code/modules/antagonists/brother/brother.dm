@@ -173,6 +173,8 @@
 			add_objective(new/datum/objective/maroon, TRUE)
 		else
 			add_objective(new/datum/objective/assassinate, TRUE)
+	else if(prob(50))
+		add_objective(new/datum/objective/auto_complete(null, "BloodBrother"))
 	else
 		add_objective(new/datum/objective/steal, TRUE)
 

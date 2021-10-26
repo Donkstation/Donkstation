@@ -205,6 +205,9 @@
 			download_objective.owner = owner
 			download_objective.gen_amount_goal()
 			add_objective(download_objective)
+		else if(prob(50))
+			var/datum/objective/auto_complete/idea = new(null,"traitor")
+			add_objective(idea)
 		else
 			var/datum/objective/steal/steal_objective = new
 			steal_objective.owner = owner
