@@ -995,7 +995,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/auto_complete/update_explanation_text()
 	. = ..()
 	switch(objective_text)
-		if("We're getting the band back together.")
+		if("Its time to get the band back together.")
 			give_special_equipment(list(/obj/item/storage/box/syndie_kit/band))
 
 /datum/objective/auto_complete/admin_edit(mob/admin)
