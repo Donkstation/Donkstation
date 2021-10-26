@@ -974,10 +974,15 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/auto_complete
 	name="auto complete"
+	///This just stores the objective without the "<I>This objective auto-completes, so just have fun!</I>"
+	var/objective_text
 
 /datum/objective/auto_complete/New(text, antag_type = null)
+	make_random_objective(antag_type)
+	..()
+/datum/objective/auto_complete/proc/make_random_objective(antag_type = null, force_random_check_true = null)
 	var/objective
-	if(prob(50) && antag_type)
+	if((prob(50) || force_random_check_true) && antag_type)
 		switch(antag_type)
 			if("traitor") objective = pick(world.file2list("strings/objectives/antag/traitor.txt"))
 			if("wizard") objective = pick(world.file2list("strings/objectives/antag/wizard.txt"))
@@ -985,7 +990,29 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 			if("BloodBrother") objective = pick(world.file2list("strings/objectives/antag/BloodBrother.txt"))
 	if(!objective) objective = pick(world.file2list("strings/objectives/antag/general.txt"))
 	explanation_text = "[objective] <I>This objective auto-completes, so just have fun!</I>"
-	..()
+	objective_text = objective
+
+/datum/objective/auto_complete/update_explanation_text()
+	. = ..()
+	switch(objective_text)
+		if("We're getting the band back together.")
+			give_special_equipment(list(/obj/item/storage/box/syndie_kit/band))
+
+/datum/objective/auto_complete/admin_edit(mob/admin)
+	var/list/antag_list = list(
+		"traitor",
+		"wizard",
+		"changeling",
+		"BloodBrother",
+		"general"
+	)
+	var/antag = input(admin, "Which objective list do you want to pull from?", "Antag lists") as anything in antag_list
+	var/random_check
+	if(antag || antag != "general") random_check = input(admin, "Do you wish to force it take from that specific list?", "Random check") in list("Yes", "No")
+	if(random_check == "No") random_check = null
+	make_random_objective(antag, random_check)
+	update_explanation_text()
+
 
 //Created by admin tools
 /datum/objective/custom
