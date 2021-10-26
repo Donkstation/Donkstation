@@ -401,7 +401,9 @@
 			log_objective(owner, steal_objective.explanation_text)
 		else if(prob(50))
 			var/datum/objective/auto_complete/idea = new(null, "changeling")
+			idea.owner = owner
 			objectives += idea
+			idea.update_explanation_text()
 			log_objective(owner, idea.explanation_text)
 		else
 			var/datum/objective/download/download_objective = new

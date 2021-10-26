@@ -91,7 +91,9 @@
 				log_objective(owner, escape_objective.explanation_text)
 		if(41 to 60)
 			var/datum/objective/auto_complete/idea = new(null, "wizard")
+			idea.owner = owner
 			objectives += idea
+			idea.update_explanation_text()
 			log_objective(owner, idea.explanation_text)
 		if(61 to 85)
 			var/datum/objective/assassinate/kill_objective = new

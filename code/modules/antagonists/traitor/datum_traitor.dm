@@ -207,6 +207,8 @@
 			add_objective(download_objective)
 		else if(prob(50))
 			var/datum/objective/auto_complete/idea = new(null,"traitor")
+			idea.owner = owner
+			idea.update_explanation_text()
 			add_objective(idea)
 		else
 			var/datum/objective/steal/steal_objective = new
