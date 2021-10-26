@@ -980,9 +980,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/auto_complete/New(text, antag_type = null)
 	make_random_objective(antag_type)
 	..()
-/datum/objective/auto_complete/proc/make_random_objective(antag_type = null, force_random_check_true = null)
+/datum/objective/auto_complete/proc/make_random_objective(antag_type = null, force_random_check = null)
 	var/objective
-	if((prob(50) || force_random_check_true) && antag_type)
+	if((prob(50) || force_random_check) && antag_type)
 		switch(antag_type)
 			if("traitor") objective = pick(world.file2list("strings/objectives/antag/traitor.txt"))
 			if("wizard") objective = pick(world.file2list("strings/objectives/antag/wizard.txt"))
@@ -1008,7 +1008,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	)
 	var/antag = input(admin, "Which objective list do you want to pull from?", "Antag lists") as anything in antag_list
 	var/random_check
-	if(antag || antag != "general") random_check = input(admin, "Do you wish to force it take from that specific list?", "Random check") in list("Yes", "No")
+	if(antag == "general") antag = null
+	if(antag) random_check = input(admin, "Do you wish to force it take from that specific list?", "Random check") in list("Yes", "No")
 	if(random_check == "No") random_check = null
 	make_random_objective(antag, random_check)
 	update_explanation_text()
