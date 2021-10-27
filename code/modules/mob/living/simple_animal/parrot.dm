@@ -1006,7 +1006,7 @@
 	del_on_death = TRUE
 	deathsound = 'sound/magic/clockwork/anima_fragment_death.ogg'
 
-/mob/living/simple_animal/parrot/Honk_Platinum
+/mob/living/simple_animal/parrot/honk_platinum
 	name = "Honk Platinum"
 	desc = "The goodest birb."
 	icon_state = "honk_fly"
