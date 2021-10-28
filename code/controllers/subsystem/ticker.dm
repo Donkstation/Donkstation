@@ -606,8 +606,6 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "The project started by [station_name()] to upgrade their silicon units with advanced equipment have been largely successful, though they have thus far refused to release schematics in a violation of company policy."
 		if(CLOCK_PROSELYTIZATION)
 			news_message = "The burst of energy released near [station_name()] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
-		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 
 	if(news_message)
 		SStopic.crosscomms_send("news_report", news_message, news_source)

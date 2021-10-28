@@ -24,8 +24,6 @@ GLOBAL_LIST(admin_antag_list)
 	var/synd_faction_desc = "A generic traitor." // Use for the description & info of a faction.
 
 	var/can_elimination_hijack = ELIMINATION_NEUTRAL //If these antags are alone when a shuttle elimination happens.
-	/// If above 0, this is the multiplier for the speed at which we hijack the shuttle. Do not directly read, use hijack_speed().
-	var/hijack_speed = 0
 
 	//Antag panel properties
 	var/show_in_antagpanel = TRUE	//This will hide adding this antag type in antag panel, use only for internal subtypes that shouldn't be added directly but still show if possessed by mind
@@ -261,11 +259,6 @@ GLOBAL_LIST(admin_antag_list)
 	if (isnull(new_memo))
 		return
 	antag_memory = new_memo
-
-/// Gets how fast we can hijack the shuttle, return 0 for can not hijack. Defaults to hijack_speed var, override for custom stuff like buffing hijack speed for hijack objectives or something.
-/datum/antagonist/proc/hijack_speed()
-	var/datum/objective/hijack/H = locate() in objectives
-	return H?.hijack_speed_override || hijack_speed
 
 //This one is created by admin tools for custom objectives
 /datum/antagonist/custom

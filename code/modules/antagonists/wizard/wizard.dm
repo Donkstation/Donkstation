@@ -4,7 +4,6 @@
 	antagpanel_category = "Wizard"
 	job_rank = ROLE_WIZARD
 	antag_moodlet = /datum/mood_event/focused
-	hijack_speed = 0.5
 	var/strip = TRUE //strip before equipping
 	var/allow_rename = TRUE
 	var/hud_version = "wizard"
@@ -64,7 +63,7 @@
 	if(!give_objectives)
 		return
 	switch(rand(1,100))
-		if(1 to 30)
+		if(1 to 40)
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner
 			kill_objective.find_target()
@@ -77,7 +76,7 @@
 				objectives += escape_objective
 				log_objective(owner, escape_objective.explanation_text)
 
-		if(31 to 40)
+		if(41 to 50)
 			var/datum/objective/steal/steal_objective = new
 			steal_objective.owner = owner
 			steal_objective.find_target()
@@ -89,13 +88,13 @@
 				escape_objective.owner = owner
 				objectives += escape_objective
 				log_objective(owner, escape_objective.explanation_text)
-		if(41 to 60)
+		if(51 to 70)
 			var/datum/objective/auto_complete/idea = new(null, "wizard")
 			idea.owner = owner
 			objectives += idea
 			idea.update_explanation_text()
 			log_objective(owner, idea.explanation_text)
-		if(61 to 85)
+		if(71 to 100)
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner
 			kill_objective.find_target()
@@ -113,13 +112,6 @@
 				survive_objective.owner = owner
 				objectives += survive_objective
 				log_objective(owner, survive_objective.explanation_text)
-
-		else
-			if (!(locate(/datum/objective/hijack) in objectives))
-				var/datum/objective/hijack/hijack_objective = new
-				hijack_objective.owner = owner
-				objectives += hijack_objective
-				log_objective(owner, hijack_objective.explanation_text)
 
 /datum/antagonist/wizard/on_removal()
 	unregister()

@@ -329,11 +329,11 @@ ALLOW_AI_MULTICAM
 
 ## Secborg ###
 ## Uncomment to prevent the security cyborg module from being chosen
-DISABLE_SECBORG
+#DISABLE_SECBORG
 
 ## Peacekeeper Borg ###
 ## Uncomment to prevent the peacekeeper cyborg module from being chosen
-DISABLE_PEACEBORG
+#DISABLE_PEACEBORG
 
 ## AWAY MISSIONS ###
 
@@ -626,7 +626,7 @@ MAX_CHICKENS 100
 MAX_SLIMES 100
 
 ## Max amount of bodies allowed to slimepeople. Has balance considerations as well as technical ones.
-MAX_SLIMEPERSON_BODIES 3
+MAX_SLIMEPERSON_BODIES 1
 
 ## Uncomment to restrict suiciding. Adds an additional confirmation dialogue, additional logging, and prevents suicide within the first 15 minutes of the round.
 RESTRICTED_SUICIDE

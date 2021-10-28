@@ -7,7 +7,6 @@
 	antagpanel_category = "Traitor"
 	job_rank = ROLE_TRAITOR
 	antag_moodlet = /datum/mood_event/focused
-	hijack_speed = 0.5				//10 seconds per hijack stage by default
 	var/special_role = ROLE_TRAITOR
 	var/employer = "The Syndicate"
 	var/should_give_codewords = TRUE
@@ -112,11 +111,8 @@
 			forge_human_objectives()
 
 /datum/antagonist/traitor/proc/forge_human_objectives()
-	var/is_hijacker = FALSE
-	if (GLOB.joined_player_list.len >= 30) // Less murderboning on lowpop thanks
-		is_hijacker = prob(10)
 	var/martyr_chance = prob(20)
-	var/objective_count = is_hijacker 			//Hijacking counts towards number of objectives
+	var/objective_count = 0
 	if(!SSticker.mode.exchange_blue && SSticker.mode.traitors.len >= 8) 	//Set up an exchange if there are enough traitors
 		if(!SSticker.mode.exchange_red)
 			SSticker.mode.exchange_red = owner
@@ -124,18 +120,10 @@
 			SSticker.mode.exchange_blue = owner
 			assign_exchange_role(SSticker.mode.exchange_red)
 			assign_exchange_role(SSticker.mode.exchange_blue)
-		objective_count += 1					//Exchange counts towards number of objectives
+		objective_count = 1					//Exchange counts towards number of objectives
 	var/toa = CONFIG_GET(number/traitor_objectives_amount)
 	for(var/i = objective_count, i < toa, i++)
 		forge_single_objective()
-
-	if(is_hijacker && objective_count <= toa) //Don't assign hijack if it would exceed the number of objectives set in config.traitor_objectives_amount
-		if (!(locate(/datum/objective/hijack) in objectives))
-			var/datum/objective/hijack/hijack_objective = new
-			hijack_objective.owner = owner
-			add_objective(hijack_objective)
-			return
-
 
 	var/martyr_compatibility = 1 //You can't succeed in stealing if you're dead.
 	for(var/datum/objective/O in objectives)
