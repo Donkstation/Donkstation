@@ -321,7 +321,7 @@
 	// deny checks
 	if (!on || !listening || wires.is_cut(WIRE_RX))
 		return FALSE
-	if (freq == FREQ_SYNDICATE && (!syndie || !syndie_channel))
+	if (freq == FREQ_SYNDICATE && !syndie && !syndie_channel)
 		return FALSE
 	if (freq == FREQ_CENTCOM)
 		return independent  // hard-ignores the z-level check

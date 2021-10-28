@@ -138,6 +138,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	var/spawn_amount = 1	//How many times we should run the spawn
 	var/bonus_items	= null	//Bonus items you gain if you purchase it
 	var/faction_flags //bitflags for what factions each item has
+	var/isgun = FALSE //surplus crate de-randomming
 
 /datum/uplink_item/proc/get_discount()
 	return pick(4;0.75,2;0.5,1;0.25)
@@ -322,23 +323,24 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bundles_TC/role_surplus/purchase(mob/user, datum/component/uplink/U)
 	var/hardsuit_count = 0 //i've gotten SIX in one crate before
+	var/gun_count = 0
 	var/list/uplink_items = get_uplink_items(SSticker && SSticker.mode? SSticker.mode : null, FALSE, TRUE, FALSE)
 	var/datum/antagonist/user_antag = user.mind.has_antag_datum(/datum/antagonist/traitor)
+	var/obj/structure/closet/crate/C = spawn_item(/obj/structure/closet/crate, user, U)
 	if(isnull(user_antag))
 		to_chat(user, "<span class='warning'><b>Something fucked up. Here's your Telecrystals back, at least.</b></span>")
 		new /obj/item/stack/telecrystal/twenty(get_turf(user))
-		return
+		return C
 	var/user_antag_faction = user_antag.synd_faction
-	if(user_antag_faction & SYND_FACTION_SYND)
+	if((user_antag_faction & SYND_FACTION_SYND) || isnull(user_antag_faction))
 		to_chat(user, "<span class='warning'><b>Something fucked up. Here's your Telecrystals back, at least.</b></span>")
 		new /obj/item/stack/telecrystal/twenty(get_turf(user))
-		return
+		return C
 	for(var/list/L in uplink_items)
 		for(var/datum/uplink_item/UI in L)
 			if(!(UI.faction_flags & user_antag_faction))
 				uplink_items -= UI
 	var/crate_value = starting_crate_value
-	var/obj/structure/closet/crate/C = spawn_item(/obj/structure/closet/crate, user, U)
 	if(U.purchase_log)
 		U.purchase_log.LogPurchase(C, src, cost)
 	while(crate_value)
@@ -352,9 +354,26 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			continue
 		if(!(I.faction_flags & user_antag_faction))
 			continue
-		if(istype(I, /datum/uplink_item/suits))
-			if(hardsuit_count < 2) //two suits max
+		if(istype(I, /datum/uplink_item/dangerous) && prob(33))
+			continue
+		if(istype(I, /datum/uplink_item/suits) && prob(50))
+			if(hardsuit_count <= 0)
 				hardsuit_count += 1
+			else if(hardsuit_count == 1)
+				if(prob(33))
+					hardsuit_count += 1
+				else //2 suits max
+					continue
+			else
+				continue
+		if(I.isgun)
+			if(gun_count <= 0)
+				gun_count += 1
+			else if(gun_count == 1)
+				if(prob(33))
+					gun_count += 1
+				else
+					continue
 			else
 				continue
 		crate_value -= I.cost
@@ -521,6 +540,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 30
 	include_modes = list(/datum/game_mode/nuclear)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_WAFFLE | SYND_FACTION_DONK | SYND_FACTION_TIGER // is this an ABSOLUTELY AWFUL idea? Yes. I may be slightly stoned while making this.
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/grenadelauncher
 	name = "Universal Grenade Launcher"
@@ -530,6 +550,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 30
 	include_modes = list(/datum/game_mode/nuclear)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_WAFFLE | SYND_FACTION_DONK | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/pie_cannon
 	name = "Banana Cream Pie Cannon"
@@ -571,6 +592,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_WAFFLE | SYND_FACTION_DONK | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/throwingweapons
 	name = "Box of Throwing Weapons"
@@ -590,6 +612,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 40
 	include_modes = list(/datum/game_mode/nuclear)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_WAFFLE | SYND_FACTION_DONK | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/smg
 	name = "C-20r Submachine Gun"
@@ -600,6 +623,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 40
 	include_modes = list(/datum/game_mode/nuclear)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_WAFFLE | SYND_FACTION_DONK | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/superechainsaw
 	name = "Super Energy Chainsaw"
@@ -616,7 +640,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	player_minimum = 25
 	cost = 18
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
-	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL
+	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN
 
 /datum/uplink_item/dangerous/doublesword/get_discount()
 	return pick(4;0.8,2;0.65,1;0.5)
@@ -679,6 +703,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/machinegun/surplusver //why
 	cost = 30
@@ -694,6 +719,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 50
 	include_modes = list(/datum/game_mode/nuclear)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/powerfist
 	name = "Power Fist"
@@ -713,6 +739,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 25
 	include_modes = list(/datum/game_mode/nuclear)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_WAFFLE | SYND_FACTION_DONK | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/pistol
 	name = "Stechkin Pistol"
@@ -722,6 +749,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 7
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/bolt_action
 	name = "Surplus Rifle"
@@ -731,6 +759,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	include_modes = list(/datum/game_mode/nuclear)
 	illegal_tech = FALSE
 	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX | SYND_FACTION_CYBERSUN | SYND_FACTION_SELF | SYND_FACTION_ANIMAL | SYND_FACTION_WAFFLE | SYND_FACTION_DONK | SYND_FACTION_TIGER
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/revolver
 	name = "Syndicate Revolver"
@@ -740,6 +769,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 50
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 	faction_flags = SYND_FACTION_GORLEX
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/foamsmg
 	name = "Toy Submachine Gun"
@@ -749,6 +779,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 	faction_flags = SYND_FACTION_DONK
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/foamsmg/surplusver
 	surplus = 80
@@ -764,6 +795,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 	faction_flags = SYND_FACTION_DONK
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/foammachinegun/surplusver
 	surplus = 60
@@ -777,6 +809,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 2
 	surplus = 10
 	faction_flags = SYND_FACTION_DONK
+	isgun = TRUE
 
 /datum/uplink_item/dangerous/semiautoturret
 	name = "Semi-Auto Turret"
@@ -958,7 +991,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 1
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 	illegal_tech = FALSE
-	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX
 
 /datum/uplink_item/ammo/pistolap
 	name = "10mm Armour Piercing Magazine"
@@ -968,7 +1000,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 2
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 	illegal_tech = FALSE
-	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX
 
 /datum/uplink_item/ammo/pistolhp
 	name = "10mm Hollow Point Magazine"
@@ -978,7 +1009,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 3
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 	illegal_tech = FALSE
-	faction_flags = SYND_FACTION_MI13 | SYND_FACTION_GORLEX
 
 /datum/uplink_item/ammo/pistolfire
 	name = "10mm Incendiary Magazine"
@@ -988,13 +1018,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 2
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 	illegal_tech = FALSE
-	faction_flags = SYND_FACTION_GORLEX //not stealthy enough for MI13
 
 /datum/uplink_item/ammo/shotgun
 	cost = 2
 	include_modes = list(/datum/game_mode/nuclear)
 	illegal_tech = FALSE
-	faction_flags = SYND_FACTION_CYBERSUN | SYND_FACTION_GORLEX
 
 /datum/uplink_item/ammo/shotgun/bag
 	name = "12g Ammo Duffel Bag"

@@ -75,7 +75,7 @@
 	var/list/factions = list(SYND_FACTION_MI13, SYND_FACTION_GORLEX, SYND_FACTION_CYBERSUN, SYND_FACTION_ANIMAL, SYND_FACTION_WAFFLE, SYND_FACTION_DONK, SYND_FACTION_TIGER)
 	if(isipc(owner.current))
 		factions += SYND_FACTION_SELF
-	if(istype(SSticker.mode, /datum/game_mode/traitor) && !istype(SSticker.mode, /datum/game_mode/traitor/internal_affairs))
+	if(owner.has_antag_datum(/datum/antagonist/traitor, FALSE))
 		synd_faction |= pick(factions)
 		if(synd_faction & SYND_FACTION_CYBERSUN) //couldn't make a `switch()` work with bitflags
 			synd_faction_name = "Cybersun Industries"
