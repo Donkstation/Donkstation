@@ -88,7 +88,7 @@
 	T.add_member(new_owner)
 	T.add_member(bro)
 	T.pick_meeting_area()
-	T.forge_brother_objectives()
+	//T.forge_brother_objectives()
 	new_owner.add_antag_datum(/datum/antagonist/brother,T)
 	bro.add_antag_datum(/datum/antagonist/brother, T)
 	T.update_name()
