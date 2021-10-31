@@ -60,6 +60,7 @@
 	. = list()
 	var/mob/living/carbon/human/H
 	var/obj/item/card/id/C
+	.["user"] = null
 	if(ishuman(user))
 		H = user
 		C = H.get_idcard(TRUE)

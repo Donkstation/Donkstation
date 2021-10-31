@@ -145,7 +145,7 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				for(var/mob/living/mob in thunderdome)
 					qdel(mob) //Clear mobs
 			for(var/obj/obj in thunderdome)
-				if(!istype(obj, /obj/machinery/camera) && !istype(obj, /obj/effect/abstract/proximity_checker))
+				if(!istype(obj, /obj/machinery/camera) && !istype(obj, /obj/effect/abstract/proximity_checker) && !istype(obj, /obj/effect/landmark/arena))
 					qdel(obj) //Clear objects
 
 			var/area/template = GLOB.areas_by_type[/area/tdome/arena_source]
@@ -418,6 +418,9 @@ GLOBAL_DATUM_INIT(admin_secrets, /datum/admin_secrets, new)
 				log_objective(A, new_objective.explanation_text, usr)
 				var/obj_count = 1
 				to_chat(T.owner, "<span class='alertsyndie'>Your contractors have updated your objectives.</span>")
+				if(istype(A, /datum/antagonist/traitor) && !istype(A, /datum/antagonist/traitor/contractor_support) && !istype(A, /datum/antagonist/traitor/internal_affairs))
+					var/datum/antagonist/traitor/S = A
+					S.forge_syndicate_faction()
 				for(var/objective in A.objectives)
 					var/datum/objective/O = objective
 					to_chat(T.owner, "<B>Objective #[obj_count]</B>: [O.explanation_text]")

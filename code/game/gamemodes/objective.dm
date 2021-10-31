@@ -365,23 +365,6 @@ GLOBAL_LIST_EMPTY(objectives)
 	name = "protect nonhuman"
 	human_check = FALSE
 
-/datum/objective/hijack
-	name = "hijack"
-	explanation_text = "Hijack the emergency shuttle by overriding the navigation protocols using the shuttle computer."
-	team_explanation_text = "Hijack the emergency shuttle by overriding the navigation protocols, using the shuttle computer. Leave no team member behind."
-	martyr_compatible = FALSE //Technically you won't get both anyway.
-	/// Overrides the hijack speed of any antagonist datum it is on ONLY, no other datums are impacted.
-	var/hijack_speed_override = 1
-
-/datum/objective/hijack/check_completion() // Requires all owners to escape.
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
-		return FALSE
-	var/list/datum/mind/owners = get_owners()
-	for(var/datum/mind/M in owners)
-		if(!considered_alive(M) || !SSshuttle.emergency.shuttle_areas[get_area(M.current)])
-			return FALSE
-	return SSshuttle.emergency.is_hijacked()
-
 /datum/objective/elimination
 	name = "elimination"
 	explanation_text = "Slaughter all loyalist crew aboard the shuttle. You, and any likeminded individuals, must be the only remaining people on the shuttle."
@@ -991,7 +974,6 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		/datum/objective/debrain,
 		/datum/objective/protect,
 		/datum/objective/destroy,
-		/datum/objective/hijack,
 		/datum/objective/escape,
 		/datum/objective/survive,
 		/datum/objective/martyr,

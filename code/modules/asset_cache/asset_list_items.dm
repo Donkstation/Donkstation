@@ -448,6 +448,37 @@
 		"abaton.png"= 'html/img/abaton.png'
 	)
 
+/datum/asset/simple/crew_tips
+	assets = list(
+		"ai.gif" = 'html/img/ai.gif',
+		"borg.png" = 'html/img/borg.png',
+		"captain.png" = 'html/img/captain.png',
+		"ce.png" = 'html/img/ce.png',
+		"chemmaster.gif" = 'html/img/chemmaster.gif',
+		"cmo.png" = 'html/img/cmo.png',
+		"computer.png" = 'html/img/computer.png',
+		"detective.png" = 'html/img/detective.png',
+		"disabler.png" = 'html/img/disabler.png',
+		"disk.png" = 'html/img/disk.png',
+		"fedora.png" = 'html/img/fedora.png',
+		"handcuffs.png" = 'html/img/handcuffs.png',
+		"hop.png" = 'html/img/hop.png',
+		"hos.png" = 'html/img/hos.png',
+		"id_gold.png" = 'html/img/id_gold.png',
+		"ian.png" = 'html/img/ian.png',
+		"id_console.gif" = 'html/img/id_console.gif',
+		"lasergun.png" = 'html/img/lasergun.png',
+		"optable.gif" = 'html/img/optable.gif',
+		"radio.png" = 'html/img/radio.png',
+		"rd.png" = 'html/img/rd.png',
+		"revolver.png" = 'html/img/revolver.png',
+		"robo.png" = 'html/img/robo.png',
+		"sec.png" = 'html/img/sec.png',
+		"stunbaton.gif" = 'html/img/stunbaton.gif',
+		"supermatter.png" = 'html/img/supermatter.png',
+		"traitor.png" = 'html/img/traitor.png',
+		"warden.png" = 'html/img/warden.png'
+	)
 /datum/asset/simple/orbit
 	assets = list(
 		"ghost.png"	= 'html/ghost.png'
@@ -472,3 +503,46 @@
 	assets = list(
 		"paigrid.png" = 'html/paigrid.png'
 	)
+
+/datum/asset/simple/portraits
+	var/tab = "use subtypes of this please"
+	assets = list()
+
+/datum/asset/simple/portraits/New()
+	if(!SSpersistence.paintings || !SSpersistence.paintings[tab] || !length(SSpersistence.paintings[tab]))
+		return
+	for(var/p in SSpersistence.paintings[tab])
+		var/list/portrait = p
+		var/png = "data/paintings/[tab]/[portrait["md5"]].png"
+		if(fexists(png))
+			var/asset_name = "[tab]_[portrait["md5"]]"
+			assets[asset_name] = png
+	..() //this is where it registers all these assets we added to the list
+
+/datum/asset/simple/portraits/library
+	tab = "library"
+
+/datum/asset/simple/portraits/library_secure
+	tab = "library_secure"
+
+/datum/asset/simple/portraits/library_private
+	tab = "library_private"
+
+/datum/asset/spritesheet/fish
+	name = "fish"
+
+/datum/asset/spritesheet/fish/register()
+	for (var/path in subtypesof(/datum/aquarium_behaviour/fish))
+		var/datum/aquarium_behaviour/fish/fish_type = path
+		var/fish_icon = initial(fish_type.icon)
+		var/fish_icon_state = initial(fish_type.icon_state)
+		var/id = sanitize_css_class_name("[fish_icon][fish_icon_state]")
+		if(sprites[id]) //no dupes
+			continue
+		Insert(id, fish_icon, fish_icon_state)
+	..()
+
+/// Removes all non-alphanumerics from the text, keep in mind this can lead to id conflicts
+/proc/sanitize_css_class_name(name)
+	var/static/regex/regex = new(@"[^a-zA-Z0-9]","g")
+	return replacetext(name, regex, "")
