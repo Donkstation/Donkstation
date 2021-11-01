@@ -425,8 +425,8 @@
 		"blobnode.png" = 'html/img/blobnode.png',
 		"blobresource.png" = 'html/img/blobresource.png',
 		"blobfactory.png" = 'html/img/blobfactory.png',
-		"changeling.gif" = 'html/img/changeling.gif',
-		"emporium.gif" = 'html/img/emporium.gif',
+		"changeling.png" = 'html/img/changeling.png',
+		"emporium.png" = 'html/img/emporium.png',
 		"absorb.png" = 'html/img/absorb.png',
 		"tentacle.png" = 'html/img/tentacle.png',
 		"hivemind.png" = 'html/img/hivemind.png',
@@ -450,11 +450,9 @@
 
 /datum/asset/simple/crew_tips
 	assets = list(
-		"ai.gif" = 'html/img/ai.gif',
 		"borg.png" = 'html/img/borg.png',
 		"captain.png" = 'html/img/captain.png',
 		"ce.png" = 'html/img/ce.png',
-		"chemmaster.gif" = 'html/img/chemmaster.gif',
 		"cmo.png" = 'html/img/cmo.png',
 		"computer.png" = 'html/img/computer.png',
 		"detective.png" = 'html/img/detective.png',
@@ -466,15 +464,12 @@
 		"hos.png" = 'html/img/hos.png',
 		"id_gold.png" = 'html/img/id_gold.png',
 		"ian.png" = 'html/img/ian.png',
-		"id_console.gif" = 'html/img/id_console.gif',
 		"lasergun.png" = 'html/img/lasergun.png',
-		"optable.gif" = 'html/img/optable.gif',
 		"radio.png" = 'html/img/radio.png',
 		"rd.png" = 'html/img/rd.png',
 		"revolver.png" = 'html/img/revolver.png',
 		"robo.png" = 'html/img/robo.png',
 		"sec.png" = 'html/img/sec.png',
-		"stunbaton.gif" = 'html/img/stunbaton.gif',
 		"supermatter.png" = 'html/img/supermatter.png',
 		"traitor.png" = 'html/img/traitor.png',
 		"warden.png" = 'html/img/warden.png'
