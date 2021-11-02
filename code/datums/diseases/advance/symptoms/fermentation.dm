@@ -75,10 +75,10 @@ datum/symptom/fermentation/Activate(datum/disease/advance/A)
 			drunken_healing = FALSE //Only run once.
 			if(HAS_TRAIT(H, TRAIT_LIGHT_DRINKER))
 				has_light_drinker = TRUE
-				REMOVE_TRAIT(H, TRAIT_LIGHT_DRINKER, ROUNDSTART_TRAIT)
+				REMOVE_TRAIT(H, TRAIT_LIGHT_DRINKER, DISEASE_TRAIT)
+				return
 			if(HAS_TRAIT(H, TRAIT_DRUNK_HEALING))
 				has_drunk_healing = TRUE
-				return
 			ADD_TRAIT(H, TRAIT_DRUNK_HEALING, DISEASE_TRAIT)
 
 	if(A.stage >= 5)
