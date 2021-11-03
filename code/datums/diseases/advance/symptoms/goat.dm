@@ -120,18 +120,5 @@
 	user.visible_message("<span class='warning'>[user] charges forward!</span>")
 	user.throw_at(target, 4, 5)
 	M.Paralyze(20) //You're stunned, hit or miss
-	sleep(20)
-	user.throwforce = 10
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2) //Very minor brain damage since you're hitting your head against things.
-
-
-
-
-
-
-
-
-
-
-
-
+	user.throwforce = 10
