@@ -59,7 +59,7 @@
 			H.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
 			
 	if(A.stage >= 5)	//Random teleports or blink, both based off the distance of teleportation
-		if((has_blink == TRUE) && (ishuman(M)))
+		if(has_blink && ishuman(M))
 			has_blink = FALSE
 			var/mob/living/carbon/C = A.affected_mob
 			if(locate(/obj/effect/proc_holder/spell/targeted/turf_teleport/viro_blink) in C.mob_spell_list)
