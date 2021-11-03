@@ -20,7 +20,7 @@
 
 /datum/symptom/gateway/severityset(datum/disease/advance/A)
 	. = ..()
-	if((A.resistance >= 12) || (A.stealth >= 4))
+	if(A.resistance >= 12 || A.stealth >= 4)
 		severity -= 2
 
 /datum/symptom/gateway/Start(datum/disease/advance/A)
