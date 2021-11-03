@@ -50,7 +50,7 @@
 		var/mob/living/carbon/human/H = A.affected_mob	
 		ADD_TRAIT(H, TRAIT_TRASH_EATER, type)
 
-	if((A.stage >= 5) && (has_headbutt == TRUE)) 				//Checks for existing headbutt ability before granting it.
+	if(A.stage >= 5 && has_headbutt) 				//Checks for existing headbutt ability before granting it.
 		var/mob/living/carbon/C = A.affected_mob
 		if(locate(/obj/effect/proc_holder/spell/aimed/headbutt) in C.mob_spell_list) //Check for existing headbutt.
 			return
