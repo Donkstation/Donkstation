@@ -17,7 +17,7 @@
 
 /datum/symptom/goat/severityset(datum/disease/advance/A)
 	. = ..()
-	if((A.resistance >= 6) || (A.stage_rate >= 10))
+	if(A.resistance >= 6 || A.stage_rate >= 10)
 		severity -= 2
 
 /datum/symptom/goat/Start(datum/disease/advance/A)
