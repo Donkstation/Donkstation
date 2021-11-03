@@ -54,7 +54,7 @@
 		var/mob/living/carbon/C = A.affected_mob
 		if(locate(/obj/effect/proc_holder/spell/aimed/headbutt) in C.mob_spell_list) //Check for existing headbutt.
 			return
-		var/obj/effect/proc_holder/spell/aimed/headbutt/headbuttgrant = new/obj/effect/proc_holder/spell/aimed/headbutt
+		var/obj/effect/proc_holder/spell/aimed/headbutt/headbuttgrant = new()
 		M.AddSpell(headbuttgrant)
 		has_headbutt = FALSE
 		
