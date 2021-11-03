@@ -17,7 +17,7 @@
 
 /datum/symptom/goat/severityset(datum/disease/advance/A)
 	. = ..()
-	if((A.resistance >= 6) || (A.stage_rate >= 10))
+	if(A.resistance >= 6 || A.stage_rate >= 10)
 		severity -= 2
 
 /datum/symptom/goat/Start(datum/disease/advance/A)
@@ -28,42 +28,42 @@
 		speed_bonus = -0.2 //While fairly low, consider triple-stacked viruses. That is 60% possible speed.
 	if(A.stage_rate >= 10)
 		has_headbutt = TRUE
-	
+
 /datum/symptom/goat/Activate(datum/disease/advance/A)
 	if(!..())
 		return
 	var/mob/living/M = A.affected_mob
-	
+
 	if(A.stage >= 2)
 		if(prob(10)) //Works as both a virus 'warning' and hints at effects of the virus itself.
 			to_chat(M, "<span class='warning'>[pick(
 			"You feel like chewing on some cans.",
-			"For some reason, you want to climb to high places.", 
-			"Vines are no match for you.", 
+			"For some reason, you want to climb to high places.",
+			"Vines are no match for you.",
 			"You're starting to understand why Pete is so mad.",
-			"You have a desire to headbutt someone.", 
+			"You have a desire to headbutt someone.",
 			"You let out a bleat under your breath.")]</span>")
-			
+
 	if((A.stage >= 3) && (speed_bonus != FALSE) && (ishuman(M))) //Grants speed, trash eating trait and climb speed bonus.
 		speed_bonus = FALSE
 		M.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=speed_bonus, blacklisted_movetypes=(FLYING|FLOATING))
-		var/mob/living/carbon/human/H = A.affected_mob	
+		var/mob/living/carbon/human/H = A.affected_mob
 		ADD_TRAIT(H, TRAIT_TRASH_EATER, type)
 
-	if((A.stage >= 5) && (has_headbutt == TRUE)) 				//Checks for existing headbutt ability before granting it.
+	if(A.stage >= 5 && has_headbutt) 				//Checks for existing headbutt ability before granting it.
 		var/mob/living/carbon/C = A.affected_mob
 		if(locate(/obj/effect/proc_holder/spell/aimed/headbutt) in C.mob_spell_list) //Check for existing headbutt.
 			return
 		var/obj/effect/proc_holder/spell/aimed/headbutt/headbuttgrant = new()
 		M.AddSpell(headbuttgrant)
 		has_headbutt = FALSE
-		
+
 /datum/symptom/goat/End(datum/disease/advance/A)
 	. = ..()
 	var/mob/living/M = A.affected_mob
 	M.remove_movespeed_modifier(type)
 	if(ishuman(M))
-		var/mob/living/carbon/human/H = A.affected_mob	
+		var/mob/living/carbon/human/H = A.affected_mob
 		REMOVE_TRAIT(H, TRAIT_TRASH_EATER, type)
 	M.RemoveSpell(/obj/effect/proc_holder/spell/aimed/headbutt)
 	UnregisterSignal(M, COMSIG_MOB_SAY)
@@ -79,7 +79,7 @@
 				split_message[i] = pick("a-a-a", "a-a")
 	message = jointext(split_message, "")
 	speech_args[SPEECH_MESSAGE] = message
-	
+
 /obj/effect/proc_holder/spell/aimed/headbutt
 	name = "Headbutt"
 	desc = "Causes you to charge forward towards a nearby target"
@@ -94,7 +94,7 @@
 	action_icon_state = "viro_goat1"
 	active_msg = "You ready yourself to headbutt!"
 	deactive_msg = "You relax your muscles."
-	
+
 /obj/effect/proc_holder/spell/aimed/headbutt/update_icon()
 	if(!action)
 		return

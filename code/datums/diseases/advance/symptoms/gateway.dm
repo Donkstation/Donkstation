@@ -20,7 +20,7 @@
 
 /datum/symptom/gateway/severityset(datum/disease/advance/A)
 	. = ..()
-	if((A.resistance >= 12) || (A.stealth >= 4))
+	if(A.resistance >= 12 || A.stealth >= 4)
 		severity -= 2
 
 /datum/symptom/gateway/Start(datum/disease/advance/A)
@@ -41,25 +41,25 @@
 	if(!..())
 		return
 	var/mob/living/M = A.affected_mob
-	
-	if((A.stage >= 2) && (random_teleportation == TRUE))
+
+	if(A.stage >= 2 && random_teleportation)
 		if(prob(15))
 			to_chat(M, "<span class='warning'>[pick(
-			"You feel unstable.", 
-			"There's a blue glow in the edge of your sight.", 
-			"You observe a bit of dust vanish in mid-air.", 
-			"The flows of bluespace are whimsical today.", 
-			"An extremity vanishes and reappears in the blink of an eye.", 
-			"It seems like you are in two places at once.", 
+			"You feel unstable.",
+			"There's a blue glow in the edge of your sight.",
+			"You observe a bit of dust vanish in mid-air.",
+			"The flows of bluespace are whimsical today.",
+			"An extremity vanishes and reappears in the blink of an eye.",
+			"It seems like you are in two places at once.",
 			"You feel stretched thin.")]</span>")
 	if(A.stage >= 4) //Bluespace Prophet comes earlier than the blink spell and random teleportation.
-		if((has_prophet == TRUE) && (ishuman(M)))
-			var/mob/living/carbon/human/H = A.affected_mob	
+		if(has_prophet && ishuman(M))
+			var/mob/living/carbon/human/H = A.affected_mob
 			has_prophet = FALSE
 			H.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
-			
+
 	if(A.stage >= 5)	//Random teleports or blink, both based off the distance of teleportation
-		if((has_blink == TRUE) && (ishuman(M)))
+		if(has_blink && ishuman(M))
 			has_blink = FALSE
 			var/mob/living/carbon/C = A.affected_mob
 			if(locate(/obj/effect/proc_holder/spell/targeted/turf_teleport/viro_blink) in C.mob_spell_list)
@@ -69,15 +69,15 @@
 			Blink.charge_max = (src.blink_cooldown * 10)
 			Blink.charge_counter = (src.blink_cooldown * 10)
 			M.AddSpell(Blink)
-		if((random_teleportation == TRUE) && (prob(15)))
+		if(random_teleportation && prob(15))
 			do_teleport(M, get_turf(M), blink_distance, channel = TELEPORT_CHANNEL_BLUESPACE)
 			M.visible_message("<span class='warning'>[M] [pick("stumbles into a hidden bluespace portal!", "suddenly vanishes from sight!", "is there one moment, then isn't!", "vanishes in a cloud of sparks!", "is no longer there!", "rudely leaves without a word.", "walks into an unseen gateway.", "wasn't where they were a moment ago.", "shifts position before your eyes.", "warps away in a flash of blue.", "catches a case of the Freakin' Gones!", "goes poof!", "blinks and...Flash! Bang! Alakazam! They're gone!")]</span>")
-			
+
 /datum/symptom/gateway/End(datum/disease/advance/A)
 	. = ..()
 	var/mob/living/M = A.affected_mob
-	
-	if(ishuman(M))		
+
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = A.affected_mob
 		M.RemoveSpell(/obj/effect/proc_holder/spell/targeted/turf_teleport/viro_blink)
 		H.cure_trauma_type(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
@@ -96,11 +96,11 @@
 
 	inner_tele_radius = 0
 	outer_tele_radius = 0 //Between two and six tiles, based off stage speed
-	
+
 	action_icon = 'icons/mob/actions/actions_viro.dmi'
 	action_background_icon_state = "bg_viro"
 	action_icon_state = "viro_blink"
 	sound1 = 'sound/magic/blink.ogg'
-	
-	
-	
+
+
+
