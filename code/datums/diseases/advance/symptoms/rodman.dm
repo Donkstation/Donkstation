@@ -87,7 +87,7 @@
 					playsound(M.loc, pick( list('sound/creatures/monkey/monkey_screech_1.ogg','sound/creatures/monkey/monkey_screech_2.ogg','sound/creatures/monkey/monkey_screech_3.ogg','sound/creatures/monkey/monkey_screech_4.ogg','sound/creatures/monkey/monkey_screech_5.ogg','sound/creatures/monkey/monkey_screech_6.ogg','sound/creatures/monkey/monkey_screech_7.ogg')), 50, 1)
 			if(!ishuman(M) && awaken_monkey && is_monkey) //Confirm they were a monkey from the start, currently a monkey and that the threshold is hit.
 				awaken_monkey = FALSE // Only one attempt at this, to minimize spam.
-				if((!M.mind) && (isliving(M))) //Confirm they are mindless and alive
+				if(!M.mind && isliving(M)) //Confirm they are mindless and alive
 					//Give them a name that isn't just Monkey(420)
 					M.name = pick(world.file2list("strings/random_monkey_names.txt"))
 					switch(M.name) //Check unique modifier names		
