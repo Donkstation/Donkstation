@@ -53,7 +53,7 @@
 			"It seems like you are in two places at once.", 
 			"You feel stretched thin.")]</span>")
 	if(A.stage >= 4) //Bluespace Prophet comes earlier than the blink spell and random teleportation.
-		if((has_prophet == TRUE) && (ishuman(M)))
+		if(has_prophet && ishuman(M))
 			var/mob/living/carbon/human/H = A.affected_mob	
 			has_prophet = FALSE
 			H.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
