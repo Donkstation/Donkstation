@@ -67,7 +67,7 @@ datum/symptom/fermentation/Activate(datum/disease/advance/A)
 			"Oh ho, the rattlin bog, the bog down in the valley-o...")]</span>")
 
 	if(A.stage >= 3)
-		if(is_waddling == FALSE)
+		if(!is_waddling)
 			is_waddling = M.AddComponent(/datum/component/waddling) //Applies waddle
 			to_chat(M, "<span class='warning'>You feel like you can't walk straight!</span>")
 		if((ishuman(M)) && (drunken_healing == TRUE))
