@@ -90,24 +90,23 @@
 				if((!M.mind) && (isliving(M))) //Confirm they are mindless and alive
 					//Give them a name that isn't just Monkey(420)
 					M.name = pick(world.file2list("strings/random_monkey_names.txt"))
-					if(M.name == "Tim the Sorcerous" || "Ook Operative" || "Sherlok Monke" || "Monkie Holms" || "Monkey-anda Jones" || "Ook") 
-					//Checking for ANY of the unique modifier names in one go, rather than a set of many 'if' statements				
-						if(M.name == "Tim the Sorcerous") //Wizard Hat
+					switch(M.name) //Check unique modifier names		
+						if("Tim the Sorcerous") //Wizard Hat
 							var/obj/item/clothing/C
 							C = new /obj/item/clothing/head/wizard(M)
 							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
 							M.equip_to_slot_or_del(C, ITEM_SLOT_HEAD)
-						if(M.name == "Ook Operative") //Fake nuke op space helmet
+						if("Ook Operative") //Fake nuke op space helmet
 							var/obj/item/clothing/C
 							C = new /obj/item/clothing/head/syndicatefake(M)
 							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
 							M.equip_to_slot_or_del(C, ITEM_SLOT_HEAD)
-						if(M.name == ("Sherlok Monke" || "Monkie Holms" || "Monkey-anda Jones")) //Detective fedora
+						if("Sherlok Monke", "Monkie Holms", "Monkey-anda Jones") //Detective fedora
 							var/obj/item/clothing/C
 							C = new /obj/item/clothing/head/fedora/det_hat(M)
 							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
 							M.equip_to_slot_or_del(C, ITEM_SLOT_HEAD)
-						if(M.name == "Ook") //Unique hat for Ook
+						if("Ook") //Unique hat for Ook
 							var/obj/item/clothing/C
 							C = new /obj/item/clothing/mask/ookmask(M)
 							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
