@@ -44,9 +44,9 @@
 			"You have a desire to headbutt someone.",
 			"You let out a bleat under your breath.")]</span>")
 
-	if((A.stage >= 3) && (speed_bonus != FALSE) && (ishuman(M))) //Grants speed, trash eating trait and climb speed bonus.
-		speed_bonus = FALSE
+	if(A.stage >= 3 && speed_bonus && ishuman(M)) //Grants speed, trash eating trait and climb speed bonus.
 		M.add_movespeed_modifier(type, update=TRUE, priority=100, multiplicative_slowdown=speed_bonus, blacklisted_movetypes=(FLYING|FLOATING))
+		speed_bonus = FALSE
 		var/mob/living/carbon/human/H = A.affected_mob
 		ADD_TRAIT(H, TRAIT_TRASH_EATER, type)
 
