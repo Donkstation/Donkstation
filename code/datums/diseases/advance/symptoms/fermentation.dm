@@ -70,7 +70,7 @@ datum/symptom/fermentation/Activate(datum/disease/advance/A)
 		if(!is_waddling)
 			is_waddling = M.AddComponent(/datum/component/waddling) //Applies waddle
 			to_chat(M, "<span class='warning'>You feel like you can't walk straight!</span>")
-		if((ishuman(M)) && (drunken_healing == TRUE))
+		if(ishuman(M) && drunken_healing)
 			var/mob/living/carbon/human/H = A.affected_mob	
 			drunken_healing = FALSE //Only run once.
 			if(HAS_TRAIT(H, TRAIT_LIGHT_DRINKER))
