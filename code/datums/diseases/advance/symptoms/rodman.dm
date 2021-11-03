@@ -64,7 +64,7 @@
 						"Your brain feels great.",
 						"The fog in your mind is clearing up.")]</span>")
 					return
-				if((increase_volume == TRUE) && (prob(35)))
+				if(increase_volume && prob(35))
 					M.say( pick( list(
 					"Ook!!", 
 					"Ook.", 
