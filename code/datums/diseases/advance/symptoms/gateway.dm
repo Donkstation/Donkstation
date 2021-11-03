@@ -64,7 +64,7 @@
 			var/mob/living/carbon/C = A.affected_mob
 			if(locate(/obj/effect/proc_holder/spell/targeted/turf_teleport/viro_blink) in C.mob_spell_list)
 				return
-			var/obj/effect/proc_holder/spell/targeted/turf_teleport/viro_blink/Blink = new/obj/effect/proc_holder/spell/targeted/turf_teleport/viro_blink()
+			var/obj/effect/proc_holder/spell/targeted/turf_teleport/viro_blink/Blink = new()
 			Blink.outer_tele_radius = src.blink_distance
 			Blink.charge_max = (src.blink_cooldown * 10)
 			Blink.charge_counter = (src.blink_cooldown * 10)
