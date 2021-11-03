@@ -55,8 +55,8 @@
 				"Perhaps those apes were right...",
 				"Your thoughts seem to be clearing up.")]</span>")
 		if(4, 5)
-			if(is_monkey == FALSE)
-				if(restore_mind == TRUE)
+			if(!is_monkey)
+				if(restore_mind)
 					M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3) //Only heals brain damage at a power equal to Mind Restoration but does nothing for traumas.
 					if(prob(5))
 						to_chat(M, "<span class='notice'>[pick(
