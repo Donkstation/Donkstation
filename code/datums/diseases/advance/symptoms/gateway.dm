@@ -42,7 +42,7 @@
 		return
 	var/mob/living/M = A.affected_mob
 	
-	if((A.stage >= 2) && (random_teleportation == TRUE))
+	if(A.stage >= 2 && random_teleportation)
 		if(prob(15))
 			to_chat(M, "<span class='warning'>[pick(
 			"You feel unstable.", 
