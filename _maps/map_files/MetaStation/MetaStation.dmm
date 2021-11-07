@@ -20476,11 +20476,16 @@
 /turf/open/space,
 /area/space/nearstation)
 "aOZ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/plasteel/white,
-/area/science/shuttledock)
+/turf/open/floor/plasteel,
+/area/crew_quarters/bar)
 "aPd" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -77796,17 +77801,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/misc_lab/range)
-"dyA" = (
-/obj/machinery/suit_storage_unit/exploration,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/machinery/light_switch{
-	pixel_x = -25;
-	pixel_y = -4
-	},
-/turf/open/floor/plasteel,
-/area/science/shuttledock)
 "dzc" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
@@ -79561,16 +79555,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"gpc" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/suit_storage_unit/exploration,
-/turf/open/floor/plasteel,
-/area/science/shuttledock)
 "gqd" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -80087,11 +80071,6 @@
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/cryopods)
-"ifB" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/firedoor/window,
-/turf/open/floor/plating/airless,
-/area/science/shuttledock)
 "ifN" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -81488,13 +81467,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/server)
-"lXD" = (
-/obj/effect/landmark/start/exploration,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/white,
-/area/science/shuttledock)
 "lYP" = (
 /obj/machinery/door/airlock/research{
 	name = "Nanite Laboratory";
@@ -82654,15 +82626,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"pDc" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white,
-/area/science/shuttledock)
 "pEJ" = (
 /obj/item/cigbutt,
 /obj/item/rack_parts,
@@ -83163,16 +83126,6 @@
 /obj/effect/turf_decal/pool,
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
-"rwL" = (
-/obj/machinery/door/airlock/research/glass{
-	name = "science shuttle dock";
-	req_one_access_txt = "49"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white,
-/area/science/shuttledock)
 "rxn" = (
 /obj/machinery/power/apc/auto_name/south{
 	pixel_y = -24
@@ -84099,15 +84052,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engine/break_room)
-"uvj" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white,
-/area/science/shuttledock)
 "uyu" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 8
@@ -84865,17 +84809,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/janitor)
-"xfX" = (
-/obj/machinery/suit_storage_unit/exploration,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -24
-	},
-/turf/open/floor/plasteel,
-/area/science/shuttledock)
 "xgg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -119883,7 +119816,7 @@ bBT
 bwO
 bFk
 bwO
-bBT
+aOZ
 bKj
 bLK
 bLK
