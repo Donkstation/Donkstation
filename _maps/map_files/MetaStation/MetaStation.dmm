@@ -31523,6 +31523,9 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
 "bkt" = (
@@ -31591,6 +31594,9 @@
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
@@ -48482,6 +48488,9 @@
 	pixel_y = 21
 	},
 /obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -71712,6 +71721,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
 "cPT" = (
@@ -82387,6 +82399,18 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/research)
+"oFn" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit/departure_lounge)
 "oGF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
@@ -84635,6 +84659,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/department/science)
+"wEf" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit/departure_lounge)
 "wFH" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -84743,6 +84779,18 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/maintenance/department/science)
+"wRN" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "wUx" = (
 /obj/machinery/power/apc{
 	areastring = "/area/medical/surgery";
@@ -109544,7 +109592,7 @@ bOs
 bJD
 bJD
 bGy
-bTJ
+wRN
 aYX
 bWj
 bXL
@@ -111386,7 +111434,7 @@ cLp
 cMe
 cMT
 cMT
-cMT
+wEf
 cOV
 cMT
 cPT
@@ -111900,7 +111948,7 @@ cLr
 cMg
 cMV
 cMV
-cMV
+oFn
 cOX
 cMV
 fGz
