@@ -29,7 +29,7 @@
 	if(A.resistance >= 8)
 		severity -= 3
 		
-datum/symptom/fermentation/Start(datum/disease/advance/A)
+/datum/symptom/fermentation/Start(datum/disease/advance/A)
 	if(!..())
 		return
 	if(A.resistance >= 8)
