@@ -34,6 +34,7 @@
 	var/lights = ""
 	var/interior = ""
 	var/proper_bomb = TRUE //Please
+	var/can_anchor = TRUE
 	var/obj/effect/countdown/nuclearbomb/countdown
 	var/sound/countdown_music = null
 	COOLDOWN_DECLARE(arm_cooldown)
@@ -410,6 +411,9 @@
 		update_ui_mode()
 
 /obj/machinery/nuclearbomb/proc/set_anchor()
+	if(!can_anchor)
+		return
+
 	if(isinspace() && !anchored)
 		to_chat(usr, "<span class='warning'>There is nothing to anchor to!</span>")
 	else
@@ -433,8 +437,14 @@
 	if(safety)
 		to_chat(usr, "<span class='danger'>The safety is still on.</span>")
 		return
+	if(isinspace())
+		to_chat(usr, "<span class='warning'>You need to arm [src] on solid ground!</span>")
+		return
 	timing = !timing
 	if(timing)
+		can_anchor = FALSE
+		anchored = TRUE
+		to_chat(usr, "<span class='warning'>[src] anchors itself to the ground.</span>")
 		previous_level = get_security_level()
 		detonation_timer = world.time + (timer_set * 10)
 		for(var/obj/item/pinpointer/nuke/syndicate/S in GLOB.pinpointer_list)

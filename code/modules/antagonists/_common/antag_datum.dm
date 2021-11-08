@@ -13,7 +13,7 @@ GLOBAL_LIST(admin_antag_list)
 	var/list/typecache_datum_blacklist = list()	//List of datums this type can't coexist with
 	var/delete_on_mind_deletion = TRUE
 	var/job_rank
-	var/give_objectives = FALSE //Should the default objectives be generated?
+	var/give_objectives = TRUE //Should the default objectives be generated?
 	var/replace_banned = TRUE //Should replace jobbanned player with ghosts if granted.
 	var/list/objectives = list()
 	var/delay_roundend = TRUE
