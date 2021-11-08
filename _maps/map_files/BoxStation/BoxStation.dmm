@@ -38916,7 +38916,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/engineering{
-	charge = 3e+006
+	charge = 1.5e+006
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -38944,7 +38944,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/smes/engineering{
-	charge = 3e+006
+	charge = 1.5e+006
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
