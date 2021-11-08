@@ -85,6 +85,7 @@
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/clothing/under/rank/brig_phys(src)
 	new /obj/item/clothing/under/rank/brig_phys/skirt(src)
+	new /obj/item/clothing/suit/hazardvest/brig_phys(src)
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
