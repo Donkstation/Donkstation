@@ -89,7 +89,7 @@ datum/symptom/fermentation/Activate(datum/disease/advance/A)
 			C.drunkenness = ethanol_power  //Keeps your drunkenness at a cap, this makes it fairly safe to drink heavily
 
 
-datum/symptom/fermentation/End(datum/disease/advance/A) //Restore traits as needed.
+/datum/symptom/fermentation/End(datum/disease/advance/A) //Restore traits as needed.
 	. = ..()
 	var/mob/living/M = A.affected_mob
 	QDEL_NULL(is_waddling)
