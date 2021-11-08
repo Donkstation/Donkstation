@@ -38915,9 +38915,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/smes/engineering{
-	charge = 1.5e+006
-	},
+/obj/machinery/power/smes/engineering,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -38943,9 +38941,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/smes/engineering{
-	charge = 1.5e+006
-	},
+/obj/machinery/power/smes/engineering,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
