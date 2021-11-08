@@ -30730,6 +30730,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/item/toy/plush/moth,
 /turf/open/floor/plasteel,
 /area/vacant_room/commissary)
 "biU" = (
