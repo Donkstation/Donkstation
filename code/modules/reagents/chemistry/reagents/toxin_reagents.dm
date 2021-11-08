@@ -90,6 +90,8 @@
 	color = "#7DC3A0"
 	toxpwr = 0
 	taste_description = "acid"
+	can_synth = FALSE //Extremely deadly
+
 
 /datum/reagent/toxin/lexorin/on_mob_life(mob/living/carbon/C)
 	. = TRUE
@@ -896,6 +898,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	toxpwr = 0
 	taste_description = "tannin"
+	can_synth = FALSE //A bit OP to directly have in a plant
 
 /datum/reagent/toxin/bungotoxin/on_mob_life(mob/living/carbon/M)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, 3)

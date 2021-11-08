@@ -24,7 +24,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 100)
 	build_path = /obj/item/reagent_containers/food/condiment/milk
-	category = list("initial","Food")
+	category = list("tier_two","Food")
 
 /datum/design/cream_carton
 	name = "Cream Carton"
@@ -32,7 +32,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 300)
 	build_path = /obj/item/reagent_containers/food/drinks/bottle/cream
-	category = list("initial","Food")
+	category = list("tier_two","Food")
 
 /datum/design/black_pepper
 	name = "10u Black Pepper"
@@ -49,7 +49,7 @@
 	materials = list(/datum/material/biomass= 50)
 	build_path = /obj/item/reagent_containers/food/condiment/peppermill
 	make_reagents = list()
-	category = list("initial","Food")
+	category = list("tier_two","Food")
 
 /datum/design/enzyme
 	name = "10u Universal Enzyme"
@@ -57,8 +57,16 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 30)
 	make_reagents = list(/datum/reagent/consumable/enzyme = 10)
-	category = list("initial","Food")
+	category = list("tier_two","Food")
 
+/datum/design/pepper_mill
+	name = "Universal Enzyme Bottle"
+	id = "enzyme_bottle"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass= 50)
+	build_path = /obj/item/reagent_containers/food/condiment/enzyme
+	make_reagents = list()
+	category = list("tier_three","Food")
 
 /datum/design/flour_sack
 	name = "Flour Sack"
@@ -66,14 +74,14 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 150)
 	build_path = /obj/item/reagent_containers/food/condiment/flour
-	category = list("initial","Food")
+	category = list("tier_two","Food")
 /datum/design/sugar_sack
 	name = "Sugar Sack"
 	id = "sugar_sack"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 200)
 	build_path = /obj/item/reagent_containers/food/condiment/sugar
-	category = list("initial","Food")
+	category = list("tier_two","Food")
 
 /datum/design/monkey_cube
 	name = "Monkey Cube"
@@ -81,7 +89,15 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 250)
 	build_path = /obj/item/reagent_containers/food/snacks/monkeycube
-	category = list("initial", "Food")
+	category = list("tier_three", "Food")
+
+/datum/design/strange_seeds
+	name = "Pack of Strange Seeds"
+	id = "strange_seed"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 7500) //Unlocked only at Tier 3/4 parts now. Cost of 2500/1875 biomass.
+	build_path = /obj/item/seeds/random
+	category = list("tier_three", "Food")
 
 /datum/design/ez_nut
 	name = "E-Z Nutrient"
@@ -97,7 +113,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 20)
 	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/l4z
-	category = list("initial","Botany Chemicals")
+	category = list("tier_two","Botany Chemicals")
 
 /datum/design/rh_nut
 	name = "Robust Harvest"
@@ -105,7 +121,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 25)
 	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/rh
-	category = list("initial","Botany Chemicals")
+	category = list("tier_three","Botany Chemicals")
 
 /datum/design/weed_killer
 	name = "Weed Killer"
@@ -113,7 +129,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 50)
 	build_path = /obj/item/reagent_containers/glass/bottle/killer/weedkiller
-	category = list("initial","Botany Chemicals")
+	category = list("tier_two","Botany Chemicals")
 
 /datum/design/pest_spray
 	name = "Pest Killer"
@@ -121,7 +137,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 50)
 	build_path = /obj/item/reagent_containers/glass/bottle/killer/pestkiller
-	category = list("initial","Botany Chemicals")
+	category = list("tier_two","Botany Chemicals")
 
 /datum/design/botany_bottle
 	name = "Empty Bottle"
@@ -137,7 +153,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 50)
 	build_path = /obj/item/stack/sheet/cotton/cloth
-	category = list("initial","Organic Materials")
+	category = list("tier_three","Organic Materials")
 
 /datum/design/cardboard
 	name = "Sheet of Cardboard"
@@ -145,7 +161,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 25)
 	build_path = /obj/item/stack/sheet/cardboard
-	category = list("initial","Organic Materials")
+	category = list("tier_two","Organic Materials")
 
 /datum/design/leather
 	name = "Sheet of Leather"
@@ -153,7 +169,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 150)
 	build_path = /obj/item/stack/sheet/leather
-	category = list("initial","Organic Materials")
+	category = list("tier_three","Organic Materials")
 
 /datum/design/toolbelt
 	name = "Tool Belt"
@@ -161,7 +177,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 300)
 	build_path = /obj/item/storage/belt/utility
-	category = list("initial","Organic Materials")
+	category = list("tier_three","Clothing")
 
 /datum/design/secbelt
 	name = "Security Belt"
@@ -169,7 +185,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 300)
 	build_path = /obj/item/storage/belt/security
-	category = list("initial","Organic Materials")
+	category = list("tier_three","Clothing")
 
 /datum/design/medbelt
 	name = "Medical Belt"
@@ -177,7 +193,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 300)
 	build_path = /obj/item/storage/belt/medical
-	category = list("initial","Organic Materials")
+	category = list("tier_three","Clothing")
 
 /datum/design/janibelt
 	name = "Janitorial Belt"
@@ -185,7 +201,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 300)
 	build_path = /obj/item/storage/belt/janitor
-	category = list("initial","Organic Materials")
+	category = list("tier_three","Clothing")
 
 /datum/design/s_holster
 	name = "Shoulder Holster"
@@ -193,7 +209,15 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 400)
 	build_path = /obj/item/clothing/accessory/holster
-	category = list("initial","Organic Materials")
+	category = list("tier_three","Clothing")
+
+/datum/design/wallet
+	name = "Wallet"
+	id = "wallet"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/storage/wallet
+	category = list("tier_three","Clothing")
 
 /datum/design/rice_hat
 	name = "Rice Hat"
@@ -201,7 +225,7 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass= 300)
 	build_path = /obj/item/clothing/head/rice_hat
-	category = list("initial","Organic Materials")
+	category = list("initial","Clothing")
 
 /datum/design/carton_soy_milk
 	name = "Soy Milk Carton"
@@ -209,4 +233,86 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
 	build_path = /obj/item/reagent_containers/food/condiment/soymilk
-	category = list("initial","Food")
+	category = list("tier_two","Food")
+
+//Tier four rewards
+//Remember, everything is 1/4 the price at this tier. Go high.
+
+/datum/design/armor_vest
+	name = "Light Armor Vest"
+	id = "armor_vest"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/clothing/suit/armor/vest
+	category = list("tier_four","Clothing")
+
+/datum/design/mime_mask
+	name = "Mime Mask"
+	id = "mime_mask"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/clothing/mask/gas/mime
+	category = list("tier_four","Clothing")
+/datum/design/clown_mask
+	name = "Clown Mask"
+	id = "clown_mask"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/clothing/mask/gas/clown_hat
+	category = list("tier_four","Clothing")
+
+/datum/design/clown_shoes
+	name = "Clown Shoes"
+	id = "clown_shoes"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/clothing/shoes/clown_shoes
+	category = list("tier_four","Clothing")
+
+/datum/design/EVA_helmet
+	name = "Space Helmet"
+	id = "space_helmet"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/clothing/head/helmet/space/eva
+	category = list("tier_four","Clothing")
+
+/datum/design/EVA_suit
+	name = "Space Suit"
+	id = "space_suit"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/clothing/suit/space/eva
+	category = list("tier_four","Clothing")
+
+/datum/design/tactical_vest
+	name = "Snack Vest"
+	id = "snack_vest"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/storage/belt/military/snack
+	category = list("tier_four","Clothing")
+
+/datum/design/spray_bottle
+	name = "Empty Spray Bottle"
+	id = "spray_bottle"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 10000)
+	build_path = /obj/item/reagent_containers/spray
+	category = list("tier_four","Botany Chemicals")
+
+/datum/design/champion_belt
+	name = "Championship Belt"
+	id = "champ_belt"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/storage/belt/champion
+	category = list("tier_four","Clothing")
+
+/datum/design/chef_hat
+	name = "Chef Hat"
+	id = "chef_hat"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 40000)
+	build_path = /obj/item/clothing/head/chefhat
+	category = list("tier_four","Clothing")

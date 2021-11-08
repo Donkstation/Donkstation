@@ -415,7 +415,21 @@
 /datum/techweb/specialized/autounlocking/biogenerator
 	design_autounlock_buildtypes = BIOGENERATOR
 	allowed_buildtypes = BIOGENERATOR
+	var/bio_gen_part_tier = 0
 
+/datum/techweb/specialized/autounlocking/biogenerator/New()
+	spawn(10) //just wait a moment to get sent your part level
+		switch(bio_gen_part_tier)
+			if(1)
+				design_autounlock_categories = list("initial") //It always hits here for some reason.
+			if(2)
+				design_autounlock_categories = list("initial", "tier_two")
+			if(3)
+				design_autounlock_categories = list("initial", "tier_two", "tier_three")
+			if(4)
+				design_autounlock_categories = list("initial", "tier_two", "tier_three", "tier_four")
+		..()
+		autounlock()
 /datum/techweb/specialized/autounlocking/smelter
 	design_autounlock_buildtypes = SMELTER
 	allowed_buildtypes = SMELTER
