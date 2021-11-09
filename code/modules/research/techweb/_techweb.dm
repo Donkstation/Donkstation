@@ -418,10 +418,10 @@
 	var/bio_gen_part_tier = 0
 
 /datum/techweb/specialized/autounlocking/biogenerator/New()
-	spawn(10) //just wait a moment to get sent your part level
-		switch(bio_gen_part_tier)
+	spawn(10) 						//Waiting 1 second to get sent the part tier.
+		switch(bio_gen_part_tier) 	//This delay does cause a one second "blank screen" on the biogenerator, but goes away.
 			if(1)
-				design_autounlock_categories = list("initial") //It always hits here for some reason.
+				design_autounlock_categories = list("initial")
 			if(2)
 				design_autounlock_categories = list("initial", "tier_two")
 			if(3)
