@@ -16,7 +16,6 @@
 	var/productivity = 0
 	var/max_items = 40
 	var/datum/techweb/stored_research
-	var/bio_gen_part_tier
 	var/list/show_categories = list("Food", "Botany Chemicals", "Organic Materials", "Clothing")
 	/// Currently selected category in the UI
 	var/selected_cat
