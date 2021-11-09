@@ -64,6 +64,6 @@
 /obj/item/clothing/under/plasmaman/exploration
 	name = "exploration plasma envirosuit"
 	desc = "A plasmaman envirosuit designed for the exploration crew."
-	icon_state = "exploration_envirosuit"
-	item_state = "exploration_envirosuit"
-	item_color = "exploration_envirosuit"
+	icon_state = "explorer_envirosuit"
+	item_state = "explorer_envirosuit"
+	item_color = "explorer_envirosuit"

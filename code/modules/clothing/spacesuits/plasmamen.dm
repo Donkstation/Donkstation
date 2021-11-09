@@ -283,8 +283,8 @@
 /obj/item/clothing/head/helmet/space/plasmaman/exploration
 	name = "exploration envirosuit helmet"
 	desc = "A plasmaman envirohelmet designed for the exploration crew, decked out in their iconic garish turquiose."
-	icon_state = "exploration_envirohelm"
-	item_state = "exploration_envirohelm"
+	icon_state = "explorer_envirohelm"
+	item_state = "explorer_envirohelm"
 	visor_icon = "explorer_envisor"
 
 //mime and clown
