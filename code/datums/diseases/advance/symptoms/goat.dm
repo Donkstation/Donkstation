@@ -119,6 +119,7 @@
 	user.emote("scream")
 	user.visible_message("<span class='warning'>[user] charges forward!</span>")
 	user.throw_at(target, 4, 5)
-	M.Paralyze(20) //You're stunned, hit or miss
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2) //Very minor brain damage since you're hitting your head against things.
-	user.throwforce = 10
+	M.Paralyze(20) 	//You're stunned, hit or miss
+	spawn(10) 		//Waits on the hit/miss to apply brain damage and readjust the throwforce.
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2) //Very minor brain damage since you're hitting your head against things.
+		user.throwforce = 10

@@ -40,7 +40,7 @@
 	if(ethanol_power >= 81)
 		ethanol_power = 81
 
-datum/symptom/fermentation/Activate(datum/disease/advance/A)
+/datum/symptom/fermentation/Activate(datum/disease/advance/A)
 	if(!..())
 		return
 	var/mob/living/M = A.affected_mob

@@ -335,10 +335,3 @@
 			message = replacetextEx(message,regex(capitalize(key),"g"), "[capitalize(value)]")
 			message = replacetextEx(message,regex(key,"g"), "[value]")
 	speech_args[SPEECH_MESSAGE] = trim(message)
-
-/obj/item/clothing/mask/ookmask
-	name = "Paper Monkey Mask"
-	desc = "One shudders to imagine what inhuman thoughts lie behind that mask."
-	icon_state = "ook"
-	item_state = "ook"
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR

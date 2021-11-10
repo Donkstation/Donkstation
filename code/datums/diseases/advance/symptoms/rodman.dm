@@ -106,11 +106,6 @@
 							C = new /obj/item/clothing/head/fedora/det_hat(M)
 							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
 							M.equip_to_slot_or_del(C, ITEM_SLOT_HEAD)
-						if("Ook") //Unique hat for Ook
-							var/obj/item/clothing/C
-							C = new /obj/item/clothing/mask/ookmask(M)
-							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
-							M.equip_to_slot_or_del(C, ITEM_SLOT_MASK)
 					M.grant_language(/datum/language/common, TRUE, TRUE, DISEASE_TRAIT)
 					M.set_playable() //Set the monkey as playable
 					M.mind_initialize()
