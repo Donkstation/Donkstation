@@ -431,7 +431,7 @@
 	log_smes()
 
 /obj/machinery/power/smes/engineering
-	charge = 1.5e6 // Engineering starts with some charge for singulo
+	charge = 3e6 // Engineering starts with some charge for singulo
 
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"

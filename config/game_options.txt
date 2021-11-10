@@ -533,7 +533,7 @@ OVERFLOW_CAP -1
 STARLIGHT
 
 ## Uncomment to bring back old grey suit assistants instead of the now default rainbow colored assistants.
-GREY_ASSISTANTS
+#GREY_ASSISTANTS
 
 ## Midround Antag (aka Mulligan antag) config options ###
 
