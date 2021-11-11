@@ -966,12 +966,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/auto_complete/proc/make_random_objective(antag_type = null, force_random_check = null)
 	var/objective
 	if((prob(50) || force_random_check) && antag_type)
-		switch(antag_type)
-			if("traitor") objective = pick(world.file2list("strings/objectives/antag/traitor.txt"))
-			if("wizard") objective = pick(world.file2list("strings/objectives/antag/wizard.txt"))
-			if("changeling") objective = pick(world.file2list("strings/objectives/antag/changeling.txt"))
-			if("BloodBrother") objective = pick(world.file2list("strings/objectives/antag/BloodBrother.txt"))
-	if(!objective) objective = pick(world.file2list("strings/objectives/antag/general.txt"))
+	if(antag_type)
+		objective = pick(world.file2list("strings/objectives/antag/[antag_type].txt"))
+	objective ||= pick(world.file2list("strings/objectives/antag/general.txt"))
 	explanation_text = "[objective] <I>This objective auto-completes, so just have fun!</I>"
 	objective_text = objective
 
@@ -991,10 +988,11 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	)
 	var/antag = input(admin, "Which objective list do you want to pull from?", "Antag lists") as anything in antag_list
 	var/random_check
-	if(antag == "general") antag = null
-	if(antag) random_check = input(admin, "Do you wish to force it take from that specific list?", "Random check") in list("Yes", "No")
-	if(random_check == "No") random_check = null
-	make_random_objective(antag, random_check)
+	if(antag == "general") 
+		antag = null
+	if(antag) 
+		random_check = input(admin, "Do you wish to force it take from that specific list?", "Random check") in list("Yes", "No")
+	make_random_objective(antag, random_check == "No" ? null : random_check)
 	update_explanation_text()
 
 
