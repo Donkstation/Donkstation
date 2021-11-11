@@ -31,7 +31,7 @@
 	)
 /datum/job/detective/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	job_tips(M, "detective")
+	job_tips(M, "detective") //DONKSTATION CHANGE: added job pop-ups
 
 /datum/outfit/job/detective
 	name = "Detective"

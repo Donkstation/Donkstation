@@ -32,10 +32,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
 	departments = DEPARTMENT_ENGINEERING | DEPARTMENT_COMMAND
-	
+
 /datum/job/chief_engineer/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	job_tips(M, "chiefengineer")
+	job_tips(M, "chiefengineer") //DONKSTATION CHANGE: added job pop-ups
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/ce

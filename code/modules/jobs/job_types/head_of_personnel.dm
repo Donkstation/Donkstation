@@ -38,10 +38,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
 	departments = DEPARTMENT_COMMAND | DEPARTMENT_SERVICE
-	
+
 /datum/job/hop/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	job_tips(M, "headofpersonnel")
+	job_tips(M, "headofpersonnel") //DONKSTATION CHANGE: added job pop-ups
 
 	species_outfits = list(
 		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/hop

@@ -3,5 +3,5 @@
 	stuff.send(M)
 	var/datum/browser/popup = new(M, "crewroles", null, 800, 600)
 	popup.set_window_options("titlebar=1;can_minimize=0;can_resize=0")
-	popup.set_content(replacetext(rustg_file_read("html/crewroles/[html_encode(fileid)].html"), regex("\\w*.png", "gm"), /datum/antagonist/proc/get_asset_url_from))
+	popup.set_content(replacetext(rustg_file_read("donkstation/code/modules/job_tips/crewroles/[html_encode(fileid)].html"), regex("\\w*.png", "gm"), /datum/antagonist/proc/get_asset_url_from))
 	popup.open(FALSE)

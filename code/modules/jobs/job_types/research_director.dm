@@ -40,7 +40,7 @@
 	)
 /datum/job/rd/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	job_tips(M, "researchdirector")
+	job_tips(M, "researchdirector") // DONKSTATION CHANGE: added job pop-ups
 
 /datum/outfit/job/rd
 	name = "Research Director"
