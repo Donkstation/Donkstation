@@ -412,7 +412,7 @@
 	return ..()
 /datum/asset/simple/bee_antags
 	assets = list(
-		"traitor.png" = 'html/img/traitor.png',
+		"traitor.png" = 'donkstation/code/modules/job_tips/assets/traitor.png',
 		"bloodcult.png" = 'html/img/bloodcult.png',
 		"dagger.png" = 'html/img/dagger.png',
 		"sacrune.png" = 'html/img/sacrune.png',
@@ -439,7 +439,7 @@
 		"pda.png" = 'html/img/pda.png',
 		"spellbook.png" = 'html/img/spellbook.png',
 		"scroll.png" = 'html/img/scroll.png',
-		"disk.png" = 'html/img/disk.png',
+		"disk.png" = 'donkstation/code/modules/job_tips/assets/disk.png',
 		"nuke.png" = 'html/img/nuke.png',
 		"eshield.png" = 'html/img/eshield.png',
 		"mech.png" = 'html/img/mech.png',
