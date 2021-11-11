@@ -958,25 +958,38 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/auto_complete
 	name="auto complete"
 	///This just stores the objective without the "<I>This objective auto-completes, so just have fun!</I>"
-	var/objective_text
+	var/objective_ID
+	///This stores if it either took from the general list or a antagonist one
+	var/objective_type
+
 
 /datum/objective/auto_complete/New(text, antag_type = null)
 	make_random_objective(antag_type)
 	..()
 /datum/objective/auto_complete/proc/make_random_objective(antag_type = null, force_random_check = null)
 	var/objective
+	var/list/objective_list
+	var/objective_num
+	objective_type = "general"
 	if((prob(50) || force_random_check) && antag_type)
-	if(antag_type)
-		objective = pick(world.file2list("strings/objectives/antag/[antag_type].txt"))
-	objective ||= pick(world.file2list("strings/objectives/antag/general.txt"))
+		objective_list = world.file2list("strings/objectives/antag/[antag_type].txt")
+		objective_type = antag_type
+	objective_list ||= world.file2list("strings/objectives/antag/general.txt")
+	objective_num = rand(1, objective_list.len)
+	objective = objective_list[objective_num]
 	explanation_text = "[objective] <I>This objective auto-completes, so just have fun!</I>"
-	objective_text = objective
+	objective_ID = objective_num
+
+#define GETTING_BAND_BACK_TOGETHER 2
 
 /datum/objective/auto_complete/update_explanation_text()
 	. = ..()
-	switch(objective_text)
-		if("Its time to get the band back together.")
-			give_special_equipment(list(/obj/item/storage/box/syndie_kit/band))
+	if(objective_type == "BloodBrother")
+		switch(objective_ID)
+			if(GETTING_BAND_BACK_TOGETHER)
+				give_special_equipment(list(/obj/item/storage/box/syndie_kit/band))
+
+#undef GETTING_BAND_BACK_TOGETHER
 
 /datum/objective/auto_complete/admin_edit(mob/admin)
 	var/list/antag_list = list(
@@ -988,9 +1001,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	)
 	var/antag = input(admin, "Which objective list do you want to pull from?", "Antag lists") as anything in antag_list
 	var/random_check
-	if(antag == "general") 
+	if(antag == "general")
 		antag = null
-	if(antag) 
+	if(antag)
 		random_check = input(admin, "Do you wish to force it take from that specific list?", "Random check") in list("Yes", "No")
 	make_random_objective(antag, random_check == "No" ? null : random_check)
 	update_explanation_text()
