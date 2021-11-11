@@ -957,7 +957,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/auto_complete
 	name="auto complete"
-	///This just stores the objective without the "<I>This objective auto-completes, so just have fun!</I>"
+	///This stores the line number of the objective
 	var/objective_ID
 	///This stores if it either took from the general list or a antagonist one
 	var/objective_type
