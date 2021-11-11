@@ -11,8 +11,15 @@ If you encounter a bug and wish to fix it, please first check if the bug exists 
 Similary, if the change would mess with a lot of features that beestation is still developing, considering PRing it to beestation instead.
 If you are unsure if you should PR it to Bee or donk, here is a list of some examples of things to PR to bee instead of us:
 
-- Something that BOTH servers would enjoy <!--Maybe change this to QoL?-->
+- Something that BOTH servers would enjoy, like a QoL change
 - A refactor/overhaul of a non-donkstation exclusive feature
 - Anything that will cause lots of merge conflicts if not PR'd to bee (for example: changing the mining suit's sprite name from "explorer_suit" to "mining_suit") <!--Unsure about this one-->
 
 If you are still unsure, think: _does this only need to be a thing on donkstation, or should it be a thing on both?_
+
+## I had a PR on bee merged, and I can't wait for a upstream pull, I want it here now!
+
+Well, since we are a downstream, it's very easy to pull commits from them. One way and probably the best way would be to make a remote of the beestation github, and then cherry pick the commit. If you are unsure how to do this, feel free to ask in the discord or take a look at the git docs listed below:
+
+- Cherry picking commits: https://git-scm.com/docs/git-cherry-pick
+- Adding a remote: https://git-scm.com/docs/git-remote
