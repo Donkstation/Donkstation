@@ -92,20 +92,17 @@
 					M.name = pick(world.file2list("strings/random_monkey_names.txt"))
 					switch(M.name) //Check unique modifier names
 						if("Tim the Sorcerous") //Wizard Hat
-							var/obj/item/clothing/C
-							C = new /obj/item/clothing/head/wizard(M)
-							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
-							M.equip_to_slot_or_del(C, ITEM_SLOT_HEAD)
+							var/obj/item/clothing/head/wizard/new_hat = new
+							ADD_TRAIT(new_hat, TRAIT_NODROP, DISEASE_TRAIT)
+							M.equip_to_slot_or_del(new_hat, ITEM_SLOT_HEAD)
 						if("Ook Operative") //Fake nuke op space helmet
-							var/obj/item/clothing/C
-							C = new /obj/item/clothing/head/syndicatefake(M)
-							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
-							M.equip_to_slot_or_del(C, ITEM_SLOT_HEAD)
+							var/obj/item/clothing/head/syndicatefake/new_hat = new
+							ADD_TRAIT(new_hat, TRAIT_NODROP, DISEASE_TRAIT)
+							M.equip_to_slot_or_del(new_hat, ITEM_SLOT_HEAD)
 						if("Sherlok Monke", "Monkie Holms", "Monkey-anda Jones") //Detective fedora
-							var/obj/item/clothing/C
-							C = new /obj/item/clothing/head/fedora/det_hat(M)
-							ADD_TRAIT(C, TRAIT_NODROP, DISEASE_TRAIT)
-							M.equip_to_slot_or_del(C, ITEM_SLOT_HEAD)
+							var/obj/item/clothing/head/fedora/det_hat/new_hat = new
+							ADD_TRAIT(new_hat, TRAIT_NODROP, DISEASE_TRAIT)
+							M.equip_to_slot_or_del(new_hat, ITEM_SLOT_HEAD)
 					M.grant_language(/datum/language/common, TRUE, TRUE, DISEASE_TRAIT)
 					M.set_playable() //Set the monkey as playable
 					M.mind_initialize()
