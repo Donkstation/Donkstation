@@ -19,6 +19,10 @@
 
 	outfit = /datum/outfit/job/ce
 
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/ce
+	)
+
 	access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS,
 			            ACCESS_EXTERNAL_AIRLOCKS, ACCESS_ATMOSPHERICS, ACCESS_EVA, ACCESS_AUX_BASE,
 			            ACCESS_HEADS, ACCESS_CONSTRUCTION, ACCESS_SEC_DOORS, ACCESS_MINISAT, ACCESS_MECH_ENGINE,
@@ -32,14 +36,11 @@
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
 	departments = DEPARTMENT_ENGINEERING | DEPARTMENT_COMMAND
-	
+
 /datum/job/chief_engineer/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	job_tips(M, "chiefengineer")
+	job_tips(M, "chiefengineer") //DONKSTATION CHANGE: added job pop-ups
 
-	species_outfits = list(
-		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/ce
-	)
 /datum/outfit/job/ce
 	name = "Chief Engineer"
 	jobtype = /datum/job/chief_engineer
