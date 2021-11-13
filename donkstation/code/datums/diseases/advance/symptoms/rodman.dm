@@ -89,7 +89,7 @@
 				awaken_monkey = FALSE // Only one attempt at this, to minimize spam.
 				if(!M.mind && isliving(M)) //Confirm they are mindless and alive
 					//Give them a name that isn't just Monkey(420)
-					M.name = pick(world.file2list("strings/random_monkey_names.txt"))
+					M.name = pick(world.file2list("donkstation/strings/random_monkey_names.txt"))
 					switch(M.name) //Check unique modifier names
 						if("Tim the Sorcerous") //Wizard Hat
 							var/obj/item/clothing/head/wizard/new_hat = new

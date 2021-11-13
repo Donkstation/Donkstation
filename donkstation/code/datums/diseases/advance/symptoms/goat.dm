@@ -88,7 +88,7 @@
 	cooldown_min = 150
 	clothes_req = FALSE
 	projectile_type = null
-	action_icon = 'icons/mob/actions/actions_viro.dmi'
+	action_icon = 'donkstation/icons/mob/actions/actions_viro.dmi'
 	action_background_icon_state = "bg_viro"
 	base_icon_state = "viro_goat0"
 	action_icon_state = "viro_goat1"

@@ -97,7 +97,7 @@
 	inner_tele_radius = 0
 	outer_tele_radius = 0 //Between two and six tiles, based off stage speed
 
-	action_icon = 'icons/mob/actions/actions_viro.dmi'
+	action_icon = 'donkstation/icons/mob/actions/actions_viro.dmi'
 	action_background_icon_state = "bg_viro"
 	action_icon_state = "viro_blink"
 	sound1 = 'sound/magic/blink.ogg'

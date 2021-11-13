@@ -101,6 +101,8 @@
 	pixel_x = rand(-4,4)
 	pixel_y = rand(-4,4)
 
+//Donkstation Change Start
+
 /obj/item/trash/attack(mob/M, mob/user, def_zone) //Just hooks into the moth clothing eating. Trash shouldn't taste good.
 	if(!ishuman(M))
 		return
@@ -113,6 +115,8 @@
 		qdel(clothing_as_food)
 	else
 		return ..()
+
+//Donkstation Change End
 
 /obj/item/trash/coal
 	name = "lump of coal"
