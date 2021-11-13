@@ -38,7 +38,7 @@
 
 /datum/job/cmo/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	job_tips(M, "chiefmedicalofficer")
+	job_tips(M, "chiefmedicalofficer") //DONKSTATION CHANGE: added job pop-ups
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"

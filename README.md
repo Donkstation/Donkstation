@@ -6,9 +6,12 @@
 ![Open Issues](https://isitmaintained.com/badge/open/Donkstation/Donkstation.svg)
 
 **Website:** http://beestation13.com
+
 **Code:** https://github.com/Donkstation/Donkstation
+
 **Wiki:** https://wiki.beestation13.com/view/Main_Page
 
+**Discord:** https://discord.gg/CqwAKK3MPD
 
 ## DOWNLOADING
 
