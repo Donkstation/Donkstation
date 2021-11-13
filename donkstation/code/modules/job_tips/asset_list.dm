@@ -1,0 +1,26 @@
+/datum/asset/simple/crew_tips
+	assets = list(
+		"borg.png" = 'donkstation/code/modules/job_tips/assets/borg.png',
+		"captain.png" = 'donkstation/code/modules/job_tips/assets/captain.png',
+		"ce.png" = 'donkstation/code/modules/job_tips/assets/ce.png',
+		"cmo.png" = 'donkstation/code/modules/job_tips/assets/cmo.png',
+		"computer.png" = 'donkstation/code/modules/job_tips/assets/computer.png',
+		"detective.png" = 'donkstation/code/modules/job_tips/assets/detective.png',
+		"disabler.png" = 'donkstation/code/modules/job_tips/assets/disabler.png',
+		"disk.png" = 'donkstation/code/modules/job_tips/assets/disk.png',
+		"fedora.png" = 'donkstation/code/modules/job_tips/assets/fedora.png',
+		"handcuffs.png" = 'donkstation/code/modules/job_tips/assets/handcuffs.png',
+		"hop.png" = 'donkstation/code/modules/job_tips/assets/hop.png',
+		"hos.png" = 'donkstation/code/modules/job_tips/assets/hos.png',
+		"id_gold.png" = 'donkstation/code/modules/job_tips/assets/id_gold.png',
+		"ian.png" = 'donkstation/code/modules/job_tips/assets/ian.png',
+		"lasergun.png" = 'donkstation/code/modules/job_tips/assets/lasergun.png',
+		"radio.png" = 'donkstation/code/modules/job_tips/assets/radio.png',
+		"rd.png" = 'donkstation/code/modules/job_tips/assets/rd.png',
+		"revolver.png" = 'donkstation/code/modules/job_tips/assets/revolver.png',
+		"robo.png" = 'donkstation/code/modules/job_tips/assets/robo.png',
+		"sec.png" = 'donkstation/code/modules/job_tips/assets/sec.png',
+		"supermatter.png" = 'donkstation/code/modules/job_tips/assets/supermatter.png',
+		"traitor.png" = 'donkstation/code/modules/job_tips/assets/traitor.png',
+		"warden.png" = 'donkstation/code/modules/job_tips/assets/warden.png'
+	)

@@ -412,7 +412,7 @@
 	return ..()
 /datum/asset/simple/bee_antags
 	assets = list(
-		"traitor.png" = 'html/img/traitor.png',
+		"traitor.png" = 'donkstation/code/modules/job_tips/assets/traitor.png',
 		"bloodcult.png" = 'html/img/bloodcult.png',
 		"dagger.png" = 'html/img/dagger.png',
 		"sacrune.png" = 'html/img/sacrune.png',
@@ -439,7 +439,7 @@
 		"pda.png" = 'html/img/pda.png',
 		"spellbook.png" = 'html/img/spellbook.png',
 		"scroll.png" = 'html/img/scroll.png',
-		"disk.png" = 'html/img/disk.png',
+		"disk.png" = 'donkstation/code/modules/job_tips/assets/disk.png',
 		"nuke.png" = 'html/img/nuke.png',
 		"eshield.png" = 'html/img/eshield.png',
 		"mech.png" = 'html/img/mech.png',
@@ -448,32 +448,6 @@
 		"abaton.png"= 'html/img/abaton.png'
 	)
 
-/datum/asset/simple/crew_tips
-	assets = list(
-		"borg.png" = 'html/img/borg.png',
-		"captain.png" = 'html/img/captain.png',
-		"ce.png" = 'html/img/ce.png',
-		"cmo.png" = 'html/img/cmo.png',
-		"computer.png" = 'html/img/computer.png',
-		"detective.png" = 'html/img/detective.png',
-		"disabler.png" = 'html/img/disabler.png',
-		"disk.png" = 'html/img/disk.png',
-		"fedora.png" = 'html/img/fedora.png',
-		"handcuffs.png" = 'html/img/handcuffs.png',
-		"hop.png" = 'html/img/hop.png',
-		"hos.png" = 'html/img/hos.png',
-		"id_gold.png" = 'html/img/id_gold.png',
-		"ian.png" = 'html/img/ian.png',
-		"lasergun.png" = 'html/img/lasergun.png',
-		"radio.png" = 'html/img/radio.png',
-		"rd.png" = 'html/img/rd.png',
-		"revolver.png" = 'html/img/revolver.png',
-		"robo.png" = 'html/img/robo.png',
-		"sec.png" = 'html/img/sec.png',
-		"supermatter.png" = 'html/img/supermatter.png',
-		"traitor.png" = 'html/img/traitor.png',
-		"warden.png" = 'html/img/warden.png'
-	)
 /datum/asset/simple/orbit
 	assets = list(
 		"ghost.png"	= 'html/ghost.png'
