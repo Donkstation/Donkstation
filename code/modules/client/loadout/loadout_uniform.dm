@@ -256,6 +256,10 @@
 	path = /obj/item/clothing/under/costume/swagoutfit
 	cost = 69000
 
+/datum/gear/uniform/misc/janimaid
+	display_name = "maid uniform"
+	path = /obj/item/clothing/under/rank/civilian/janitor/maid
+
 //RANK SUBTYPE
 
 /datum/gear/uniform/rank
