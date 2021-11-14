@@ -342,6 +342,7 @@
 					/obj/item/clothing/shoes/galoshes = 2,
 					/obj/item/watertank/janitor = 1,
 					/obj/item/storage/belt/janitor = 2)
+	// DonkStation change
 	contraband = list(/obj/item/clothing/under/rank/civilian/janitor/maid = 1,
 					  /obj/item/clothing/shoes/laceup = 1,
 					  /obj/item/clothing/gloves/color/white = 1)
