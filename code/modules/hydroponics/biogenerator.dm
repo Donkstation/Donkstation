@@ -22,10 +22,12 @@
 
 /obj/machinery/biogenerator/Initialize()
 	. = ..()
+	//Donkstation Changes Start
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		var/datum/techweb/specialized/autounlocking/biogenerator/bio_parts = new
 		bio_parts.bio_gen_part_tier = M.rating
 		stored_research = bio_parts
+	//Donkstation Changes End
 	create_reagents(1000)
 
 /obj/machinery/biogenerator/Destroy()
@@ -59,9 +61,11 @@
 		max_storage = 40 * B.rating
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		E += M.rating
+		//Donkstation Changes Start
 		var/datum/techweb/specialized/autounlocking/biogenerator/bio_parts = new
 		bio_parts.bio_gen_part_tier = M.rating
 		stored_research = bio_parts
+		//Donkstation Changes End
 	efficiency = E
 	productivity = P
 	max_items = max_storage

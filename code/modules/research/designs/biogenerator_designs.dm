@@ -2,6 +2,9 @@
 ///////Biogenerator Designs ///////
 ///////////////////////////////////
 
+//Donkstation changes:
+//Adds 4 tiers to the biogenerator designs
+
 /datum/design/milk
 	name = "10 Milk"
 	id = "milk"

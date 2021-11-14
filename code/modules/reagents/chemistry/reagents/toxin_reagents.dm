@@ -90,7 +90,7 @@
 	color = "#7DC3A0"
 	toxpwr = 0
 	taste_description = "acid"
-	can_synth = FALSE //Too deadly for botany
+	can_synth = FALSE //Extremely deadly
 
 
 /datum/reagent/toxin/lexorin/on_mob_life(mob/living/carbon/C)
@@ -532,7 +532,6 @@
 	color = "#7F10C0"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	toxpwr = 2.5
-	can_synth = FALSE //Too strong for botany. 25% chance a tick to really ruin your day.
 
 /datum/reagent/toxin/initropidril/on_mob_life(mob/living/carbon/C)
 	if(prob(25))
@@ -565,7 +564,6 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	toxpwr = 0
 	taste_mult = 0 // undetectable, I guess?
-	can_synth = FALSE //Too strong for botany. Ten cycles and permastunned
 
 /datum/reagent/toxin/pancuronium/on_mob_life(mob/living/carbon/M)
 	if(current_cycle >= 10)
@@ -599,7 +597,6 @@
 	color = "#7DC3A0"
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	toxpwr = 0.5
-	can_synth = FALSE //Too strong for botany. This stuff removes people from the round outright
 
 /datum/reagent/toxin/sulfonal/on_mob_life(mob/living/carbon/M)
 	if(current_cycle >= 22)
@@ -645,7 +642,6 @@
 	color = "#7DC3A0"
 	metabolization_rate = 0.06 * REAGENTS_METABOLISM
 	toxpwr = 1.75
-	can_synth = FALSE //Too strong for botany. Kills in no time
 
 /datum/reagent/toxin/coniine/on_mob_life(mob/living/carbon/M)
 	M.losebreath += 5
@@ -683,7 +679,6 @@
 	color = "#191919"
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	toxpwr = 1
-	can_synth = FALSE //Too strong for botany. 6 second stuns?
 
 /datum/reagent/toxin/curare/on_mob_life(mob/living/carbon/M)
 	if(current_cycle >= 11)
