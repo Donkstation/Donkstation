@@ -392,7 +392,7 @@
 
 /datum/gear/uniform/rank/engsec/tos
 	display_name = "engsec uniform, TOS"
-	path = /obj/item/clothing/under/trek/engsec
+	path = /obj/item/clothing/under/trek/engsec/noarmor
 
 /datum/gear/uniform/rank/engsec/tng
 	display_name = "engsec uniform, TNG"

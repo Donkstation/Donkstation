@@ -3445,6 +3445,7 @@
 #include "code\modules\wiremod\shell\shell_items.dm"
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
+#include "donkstation\code\modules\clothing\under\trek.dm"
 #include "donkstation\code\modules\job_tips\asset_list.dm"
 #include "donkstation\code\modules\job_tips\job_tips.dm"
 #include "donkstation\code\modules\mob\simplemobs.dm"
