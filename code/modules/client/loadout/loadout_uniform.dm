@@ -367,3 +367,63 @@
 	display_name = "security jumpsuit, Nanotrasen mall cop uniform"
 	path = /obj/item/clothing/under/rank/security/officer/mallcop
 	cost = 7500
+
+// DonkStation Change: Start - STAR TREK UNIFORMS
+// Medical/Science
+/datum/gear/uniform/rank/medsci
+	subtype_path = /datum/gear/uniform/rank/medsci
+	allowed_roles = list("Paramedic", "Medical Doctor", "Chief Medical Officer", \
+						 "Virologist", "Geneticist", "Brig Physician", \
+						 "Scientist", "Roboticist", "Research Director")
+
+/datum/gear/uniform/rank/medsci/tos
+	display_name = "medsci uniform, TOS"
+	path = /obj/item/clothing/under/trek/medsci
+
+/datum/gear/uniform/rank/medsci/tng
+	display_name = "medsci uniform, TNG"
+	path = /obj/item/clothing/under/trek/medsci/next
+
+/datum/gear/uniform/rank/medsci/ent
+	display_name = "medsci uniform, ENT"
+	path = /obj/item/clothing/under/trek/medsci/ent
+
+// Engineering/Security
+
+/datum/gear/uniform/rank/engsec
+	subtype_path = /datum/gear/uniform/rank/engsec
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician", \
+						 "Security Officer", "Warden", "Head of Security")
+
+/datum/gear/uniform/rank/engsec/tos
+	display_name = "engsec uniform, TOS"
+	path = /obj/item/clothing/under/trek/engsec/noarmor
+
+/datum/gear/uniform/rank/engsec/tng
+	display_name = "engsec uniform, TNG"
+	path = /obj/item/clothing/under/trek/engsec/next
+
+/datum/gear/uniform/rank/engsec/ent
+	display_name = "engsec uniform, ENT"
+	path = /obj/item/clothing/under/trek/engsec/ent
+
+// Command
+
+/datum/gear/uniform/rank/command
+	subtype_path = /datum/gear/uniform/rank/command
+	allowed_roles = list("Captain", "Head of Personnel", "Chief Engineer", \
+						 "Research Director", "Chief Medical Officer")
+
+/datum/gear/uniform/rank/command/tos
+	display_name = "command uniform, TOS"
+	path = /obj/item/clothing/under/trek/command
+
+/datum/gear/uniform/rank/command/tng
+	display_name = "command uniform, TNG"
+	path = /obj/item/clothing/under/trek/command/next
+
+/datum/gear/uniform/rank/command/ent
+	display_name = "command uniform, ENT"
+	path = /obj/item/clothing/under/trek/command/ent
+
+// DonkStation Change: End - STAR TREK UNIFORMS

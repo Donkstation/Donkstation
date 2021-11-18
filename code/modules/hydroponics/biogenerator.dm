@@ -16,13 +16,18 @@
 	var/productivity = 0
 	var/max_items = 40
 	var/datum/techweb/stored_research
-	var/list/show_categories = list("Food", "Botany Chemicals", "Organic Materials")
+	var/list/show_categories = list("Food", "Botany Chemicals", "Organic Materials", "Clothing")
 	/// Currently selected category in the UI
 	var/selected_cat
 
 /obj/machinery/biogenerator/Initialize()
 	. = ..()
-	stored_research = new /datum/techweb/specialized/autounlocking/biogenerator
+	//Donkstation Changes Start
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
+		var/datum/techweb/specialized/autounlocking/biogenerator/bio_parts = new
+		bio_parts.bio_gen_part_tier = M.rating
+		stored_research = bio_parts
+	//Donkstation Changes End
 	create_reagents(1000)
 
 /obj/machinery/biogenerator/Destroy()
@@ -56,9 +61,15 @@
 		max_storage = 40 * B.rating
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		E += M.rating
+		//Donkstation Changes Start
+		var/datum/techweb/specialized/autounlocking/biogenerator/bio_parts = new
+		bio_parts.bio_gen_part_tier = M.rating
+		stored_research = bio_parts
+		//Donkstation Changes End
 	efficiency = E
 	productivity = P
 	max_items = max_storage
+	ui_update()
 
 /obj/machinery/biogenerator/examine(mob/user)
 	. = ..()
@@ -211,7 +222,7 @@
 		return FALSE
 	else
 		if(remove_points)
-			points -= materials[getmaterialref(/datum/material/biomass)]*multiplier/efficiency
+			points -= round(materials[getmaterialref(/datum/material/biomass)]*multiplier/efficiency)
 			ui_update()
 		update_icon()
 		return TRUE
@@ -317,7 +328,7 @@
 			cat["items"] += list(list(
 				"id" = D.id,
 				"name" = D.name,
-				"cost" = D.materials[getmaterialref(/datum/material/biomass)]/efficiency,
+				"cost" = round(D.materials[getmaterialref(/datum/material/biomass)]/efficiency),
 			))
 		data["categories"] += list(cat)
 
