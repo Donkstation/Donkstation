@@ -415,6 +415,9 @@
 /datum/techweb/specialized/autounlocking/biogenerator
 	design_autounlock_buildtypes = BIOGENERATOR
 	allowed_buildtypes = BIOGENERATOR
+	//Donkstation Changes Start
+	var/bio_gen_part_tier = 0
+	//Donkstation Changes End
 
 /datum/techweb/specialized/autounlocking/smelter
 	design_autounlock_buildtypes = SMELTER
