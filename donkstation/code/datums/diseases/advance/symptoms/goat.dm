@@ -82,10 +82,10 @@
 
 /obj/effect/proc_holder/spell/aimed/headbutt
 	name = "Headbutt"
-	desc = "Causes you to charge forward towards a nearby target"
+	desc = "Causes you to charge forward towards a nearby target."
 	charge_type = "recharge"
-	charge_max	= 150
-	cooldown_min = 150
+	charge_max	= 15 SECONDS
+	cooldown_min = 15 SECONDS
 	clothes_req = FALSE
 	projectile_type = null
 	action_icon = 'donkstation/icons/mob/actions/actions_viro.dmi'
@@ -113,13 +113,13 @@
 		var/mob/living/carbon/human/H = user
 		if(H.legcuffed) 					//No headbutts while your LEGS are cuffed!
 			user.visible_message("<span class='warning'>[user] trips while trying to charge!</span>")
-			M.Paralyze(20)
+			M.Paralyze(2 SECONDS)
 			return
 	user.throwforce = 25 //Just enough to very slowly break a door, window or crate. 25 hits on a crate.
 	user.emote("scream")
 	user.visible_message("<span class='warning'>[user] charges forward!</span>")
-	user.throw_at(target, 4, 5)
-	M.Paralyze(20) 	//You're stunned, hit or miss
-	spawn(10) 		//Waits on the hit/miss to apply brain damage and readjust the throwforce.
+	user.throw_at(target, 4, 4)
+	M.Paralyze(2 SECONDS) 	//You're stunned, hit or miss
+	spawn(1 SECOND) 		//Waits on the hit/miss to apply brain damage and readjust the throwforce.
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2) //Very minor brain damage since you're hitting your head against things.
 		user.throwforce = 10
