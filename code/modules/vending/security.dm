@@ -16,8 +16,10 @@
 					/obj/item/holosign_creator/security = 3,
 					/obj/item/restraints/legcuffs/bola/energy = 7,
 					/obj/item/club = 5,
+					// Donkstation Change Start: PR #79
 				    /obj/item/clothing/head/helmet/blueshirt = 2,
 				    /obj/item/clothing/suit/armor/vest/blueshirt = 2)
+					// Donkstation Change End: PR #79
 	contraband = list(/obj/item/clothing/glasses/sunglasses/advanced = 2,
 					  /obj/item/storage/fancy/donut_box = 2)
 	premium = list(/obj/item/storage/belt/security/webbing = 5,
