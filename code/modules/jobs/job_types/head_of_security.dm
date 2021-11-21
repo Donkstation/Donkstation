@@ -18,6 +18,11 @@
 	exp_type_department = EXP_TYPE_SECURITY
 
 	outfit = /datum/outfit/job/hos
+
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/hos
+	)
+
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_SEC_RECORDS, ACCESS_BRIG, ACCESS_BRIGPHYS, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY,
@@ -33,6 +38,12 @@
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_SECURITY
 	departments = DEPARTMENT_SECURITY | DEPARTMENT_COMMAND
+
+/datum/job/hos/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "headofsecurity") //DONKSTATION CHANGE: added job pop-ups
+
+
 
 /datum/outfit/job/hos
 	name = "Head of Security"

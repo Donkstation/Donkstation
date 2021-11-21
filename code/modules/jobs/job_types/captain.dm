@@ -28,12 +28,19 @@
 	display_order = JOB_DISPLAY_ORDER_CAPTAIN
 	departments = DEPARTMENT_COMMAND
 
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/command
+	)
 /datum/job/captain/get_access()
 	return get_all_accesses()
 
 /datum/job/captain/announce(mob/living/carbon/human/H)
 	..()
 	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Captain [H.real_name] on deck!"))
+
+/datum/job/captain/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "captain")//DONKSTATION CHANGE: added roundstart pop-ups
 
 /datum/outfit/job/captain
 	name = "Captain"

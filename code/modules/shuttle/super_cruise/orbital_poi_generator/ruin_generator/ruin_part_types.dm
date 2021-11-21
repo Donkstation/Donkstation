@@ -415,6 +415,12 @@
 	loot_room = TRUE
 	max_occurances = 1
 
+/datum/map_template/ruin_part/ailab
+	file_name = "13x13_ai-lab"
+	weight = 5
+	loot_room = TRUE
+	max_occurances = 1
+
 /datum/map_template/ruin_part/cratestorage
 	file_name = "13x9_cratestorage"
 	weight = 3
@@ -469,3 +475,8 @@
 	file_name = "21x17_shuttledock"
 	weight = 4
 	max_occurances = 1
+
+/datum/map_template/ruin_part/syndicate_listening
+	file_name = "13x13_listening_base"
+	weight = 2
+	loot_room = TRUE

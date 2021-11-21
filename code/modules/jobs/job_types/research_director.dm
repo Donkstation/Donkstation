@@ -35,6 +35,13 @@
 	display_order = JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR
 	departments = DEPARTMENT_SCIENCE | DEPARTMENT_COMMAND
 
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/rd
+	)
+/datum/job/rd/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "researchdirector") // DONKSTATION CHANGE: added job pop-ups
+
 /datum/outfit/job/rd
 	name = "Research Director"
 	jobtype = /datum/job/rd

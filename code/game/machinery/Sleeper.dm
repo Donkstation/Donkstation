@@ -48,6 +48,7 @@
 	for(var/i in 1 to I)
 		available_chems |= possible_chems[i]
 	reset_chem_buttons()
+	ui_update()
 
 /obj/machinery/sleeper/update_icon()
 	if(state_open)
@@ -69,6 +70,7 @@
 	if (!state_open)
 		container_resist(user)
 
+//Note: open_machine and close_machine already ui_update()
 /obj/machinery/sleeper/open_machine()
 	if(!state_open && !panel_open)
 		flick("[initial(icon_state)]-anim", src)
@@ -129,6 +131,12 @@
 		visible_message("<span class='notice'>[usr] pries open [src].</span>", "<span class='notice'>You pry open [src].</span>")
 		open_machine()
 
+
+/obj/machinery/sleeper/ui_requires_update(mob/user, datum/tgui/ui)
+	. = ..()
+
+	if(occupant)
+		. = TRUE // Only autoupdate when occupied
 
 /obj/machinery/sleeper/ui_state(mob/user)
 	if(controls_inside)

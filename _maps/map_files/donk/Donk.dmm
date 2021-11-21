@@ -3820,7 +3820,7 @@
 /turf/open/floor/plasteel,
 /area/space)
 "cWf" = (
-/obj/structure/piano,
+/obj/structure/musician/piano,
 /turf/open/floor/plasteel/chapel{
 	dir = 8
 	},
@@ -12386,7 +12386,7 @@
 /turf/open/floor/noslip/dark,
 /area/space)
 "jIw" = (
-/obj/structure/piano{
+/obj/structure/musician/piano{
 	icon_state = "piano"
 	},
 /turf/open/floor/plasteel/vaporwave,
@@ -14576,8 +14576,8 @@
 /area/space)
 "lyn" = (
 /obj/structure/easel,
-/obj/item/canvas/twentythreeXtwentythree,
-/obj/item/canvas/twentythreeXtwentythree,
+/obj/item/canvas/twentythree_twentythree,
+/obj/item/canvas/twentythree_twentythree,
 /turf/open/floor/wood,
 /area/space)
 "lyA" = (

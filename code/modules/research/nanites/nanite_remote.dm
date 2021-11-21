@@ -104,7 +104,8 @@
 	return data
 
 /obj/item/nanite_remote/ui_act(action, params)
-	if(..())
+	. = ..()
+	if(.)
 		return
 	switch(action)
 		if("set_code")
@@ -170,7 +171,6 @@
 				locked = TRUE
 				update_icon()
 			. = TRUE
-	ui_update()
 
 /obj/item/nanite_remote/comm
 	name = "nanite communication remote"

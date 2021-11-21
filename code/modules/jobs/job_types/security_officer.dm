@@ -28,6 +28,9 @@
 	display_order = JOB_DISPLAY_ORDER_SECURITY_OFFICER
 	departments = DEPARTMENT_SECURITY
 
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/security
+	)
 /datum/job/officer/get_access()
 	var/list/L = list()
 	L |= ..() | check_config_for_sec_maint()
@@ -111,7 +114,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 		to_chat(M, "<b>You have been assigned to [department]!</b>")
 	else
 		to_chat(M, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
-
+	job_tips(M, "securityofficer") // DONKSTATION CHANGE: added job pop-ups
 
 
 /datum/outfit/job/security

@@ -108,3 +108,13 @@
 	rename_team = "Abnormal Activities Unit"
 	mission = "Figure out what's happening on-station and solve any problems aboard."
 	polldesc = "an elite Nanotrasen strike unit"
+
+/datum/ert/kudzu
+	roles = list(/datum/antagonist/ert/kudzu)
+	leader_role = /datum/antagonist/ert/kudzu
+	teamsize = 5
+	opendoors = FALSE
+	rename_team = "Weed Whackers"
+	mission = "Eliminate the kudzu with extreme prejudice"
+	polldesc = "an elite gardening team"
+	code = "Vine Green"

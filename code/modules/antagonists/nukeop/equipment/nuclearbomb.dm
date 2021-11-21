@@ -34,7 +34,9 @@
 	var/lights = ""
 	var/interior = ""
 	var/proper_bomb = TRUE //Please
+	var/can_anchor = TRUE
 	var/obj/effect/countdown/nuclearbomb/countdown
+	var/sound/countdown_music = null
 	COOLDOWN_DECLARE(arm_cooldown)
 
 /obj/machinery/nuclearbomb/Initialize()
@@ -106,6 +108,7 @@
 		update_ui_mode()
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 		add_fingerprint(user)
+		ui_update()
 		return
 
 	switch(deconstruction_state)
@@ -264,6 +267,11 @@
 
 	ui_mode = NUKEUI_AWAIT_TIMER
 
+/obj/machinery/nuclearbomb/ui_requires_update(mob/user, datum/tgui/ui)
+	. = ..()
+	if(timing)
+		. = TRUE // Autoupdate while counting down
+
 /obj/machinery/nuclearbomb/ui_interact(mob/user, datum/tgui/ui=null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -339,7 +347,6 @@
 					playsound(src, 'sound/machines/nuke/general_beep.ogg', 50, FALSE)
 					auth = I
 					. = TRUE
-			update_ui_mode()
 		if("keypad")
 			if(auth)
 				var/digit = params["digit"]
@@ -349,7 +356,6 @@
 							set_safety()
 							yes_code = FALSE
 							playsound(src, 'sound/machines/nuke/confirm_beep.ogg', 50, FALSE)
-							update_ui_mode()
 						else
 							playsound(src, 'sound/machines/nuke/general_beep.ogg', 50, FALSE)
 						numeric_input = ""
@@ -374,7 +380,6 @@
 									. = TRUE
 							else
 								playsound(src, 'sound/machines/nuke/angry_beep.ogg', 50, FALSE)
-						update_ui_mode()
 					if("0","1","2","3","4","5","6","7","8","9")
 						if(numeric_input != "ERROR")
 							numeric_input += digit
@@ -391,7 +396,6 @@
 					return
 				playsound(src, 'sound/machines/nuke/confirm_beep.ogg', 50, FALSE)
 				set_active()
-				update_ui_mode()
 				. = TRUE
 			else
 				playsound(src, 'sound/machines/nuke/angry_beep.ogg', 50, FALSE)
@@ -399,10 +403,17 @@
 			if(auth && yes_code)
 				playsound(src, 'sound/machines/nuke/general_beep.ogg', 50, FALSE)
 				set_anchor()
+				. = TRUE
 			else
 				playsound(src, 'sound/machines/nuke/angry_beep.ogg', 50, FALSE)
 
+	if(.)
+		update_ui_mode()
+
 /obj/machinery/nuclearbomb/proc/set_anchor()
+	if(!can_anchor)
+		return
+
 	if(isinspace() && !anchored)
 		to_chat(usr, "<span class='warning'>There is nothing to anchor to!</span>")
 	else
@@ -413,6 +424,7 @@
 	if(safety)
 		if(timing)
 			set_security_level(previous_level)
+			stop_soundtrack_music()
 			for(var/obj/item/pinpointer/nuke/syndicate/S in GLOB.pinpointer_list)
 				S.switch_mode_to(initial(S.mode))
 				S.alert = FALSE
@@ -425,17 +437,29 @@
 	if(safety)
 		to_chat(usr, "<span class='danger'>The safety is still on.</span>")
 		return
+	if(isinspace())
+		to_chat(usr, "<span class='warning'>You need to arm [src] on solid ground!</span>")
+		return
 	timing = !timing
 	if(timing)
+		can_anchor = FALSE
+		anchored = TRUE
+		to_chat(usr, "<span class='warning'>[src] anchors itself to the ground.</span>")
 		previous_level = get_security_level()
 		detonation_timer = world.time + (timer_set * 10)
 		for(var/obj/item/pinpointer/nuke/syndicate/S in GLOB.pinpointer_list)
 			S.switch_mode_to(TRACK_INFILTRATOR)
 		countdown.start()
 		set_security_level(SEC_LEVEL_DELTA)
+
+		if (proper_bomb) // Why does this exist
+			countdown_music = play_soundtrack_music(/datum/soundtrack_song/bee/countdown, only_station = TRUE)
+
 	else
 		detonation_timer = null
 		set_security_level(previous_level)
+		stop_soundtrack_music()
+
 		for(var/obj/item/pinpointer/nuke/syndicate/S in GLOB.pinpointer_list)
 			S.switch_mode_to(initial(S.mode))
 			S.alert = FALSE
@@ -469,7 +493,8 @@
 	yes_code = FALSE
 	safety = TRUE
 	update_icon()
-	sound_to_playing_players('sound/machines/alarm.ogg')
+	if(proper_bomb)
+		sound_to_playing_players('sound/machines/alarm.ogg')
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
 	addtimer(CALLBACK(src, .proc/actually_explode), 100)
@@ -568,6 +593,8 @@
 		S.alert = FALSE
 	countdown.stop()
 	update_icon()
+	update_ui_mode()
+	ui_update()
 
 /obj/machinery/nuclearbomb/beer/proc/fizzbuzz()
 	var/datum/reagents/R = new/datum/reagents(1000)

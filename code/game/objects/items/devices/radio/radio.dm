@@ -33,6 +33,9 @@
 	var/use_command = FALSE  // If true, broadcasts will be large and BOLD.
 	var/command = FALSE  // If true, use_command can be toggled at will.
 
+	///makes anyone who is talking through this anonymous.
+	var/anonymize = FALSE
+
 	// Encryption key handling
 	var/obj/item/encryptionkey/keyslot
 	var/translate_binary = FALSE  // If true, can hear the special binary channel.
@@ -80,6 +83,7 @@
 	keyslot = new /obj/item/encryptionkey/syndicate
 	syndie = 1
 	recalculateChannels()
+	ui_update()
 
 /obj/item/radio/Destroy()
 	remove_radio_all(src) //Just to be sure
@@ -108,16 +112,18 @@
 /obj/item/radio/AltClick(mob/user)
 	if(headset)
 		. = ..()
-	else
+	else if(user.canUseTopic(src, !issilicon(user), TRUE, FALSE))
 		broadcasting = !broadcasting
 		to_chat(user, "<span class='notice'>You toggle broadcasting [broadcasting ? "on" : "off"].</span>")
+		ui_update()
 
 /obj/item/radio/CtrlShiftClick(mob/user)
 	if(headset)
 		. = ..()
-	else
+	else if(user.canUseTopic(src, !issilicon(user), TRUE, FALSE))
 		listening = !listening
 		to_chat(user, "<span class='notice'>You toggle speaker [listening ? "on" : "off"].</span>")
+		ui_update()
 
 /obj/item/radio/interact(mob/user)
 	if(unscrewed && !isAI(user))
@@ -422,6 +428,7 @@
 					keyslot = null
 
 			recalculateChannels()
+			ui_update()
 			to_chat(user, "<span class='notice'>You pop out the encryption key in the radio.</span>")
 
 		else
@@ -438,6 +445,7 @@
 			keyslot = W
 
 		recalculateChannels()
+		ui_update()
 
 
 /obj/item/radio/off	// Station bounced radios, their only difference is spawning with the speakers off, this was made to help the lag.

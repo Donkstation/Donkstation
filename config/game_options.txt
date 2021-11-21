@@ -16,7 +16,7 @@ REVIVAL_BRAIN_LIFE -1
 
 ## OOC DURING ROUND ###
 ## Comment this out if you want OOC to be automatically disabled during the round, it will be enabled during the lobby and after the round end results.
-OOC_DURING_ROUND
+#OOC_DURING_ROUND
 
 ## LOOC
 ## Comment this out to disable LOOC
@@ -101,15 +101,15 @@ NO_INTERCEPT_REPORT
 
 PROBABILITY DYNAMIC 9
 PROBABILITY TRAITOR 8
-PROBABILITY CULT 1
+PROBABILITY CULT 6
 PROBABILITY TRAITORCHAN 5
 PROBABILITY CHANGELING 5
-PROBABILITY REVOLUTION 0
+PROBABILITY REVOLUTION 4
 PROBABILITY INCURSION 4
 PROBABILITY NUCLEAR 4
-PROBABILITY CLOCKCULT 1
-PROBABILITY SECRET_EXTENDED 0
-PROBABILITY CLOWNOPS 2
+PROBABILITY CLOCKCULT 2
+PROBABILITY SECRET_EXTENDED 1
+PROBABILITY CLOWNOPS 0
 PROBABILITY DEVIL 0
 PROBABILITY DEVIL_AGENTS 0
 PROBABILITY GANG 0
@@ -117,8 +117,8 @@ PROBABILITY HERESY 0
 PROBABILITY INTERNAL_AFFAIRS 0
 PROBABILITY METEOR 0
 PROBABILITY MONKEY 0
-PROBABILITY TRAITORBRO 3
-PROBABILITY WIZARD 2
+PROBABILITY TRAITORBRO 0
+PROBABILITY WIZARD 0
 
 ## Creates issues when NO_INTERCEPT_REPORT is enabled
 PROBABILITY EXTENDED 0
@@ -163,7 +163,7 @@ CONTINUOUS SECRET_EXTENDED
 ## In modes that are continuous, if all antagonists should die then a new set of antagonists will be created.
 
 MIDROUND_ANTAG TRAITOR
-#MIDROUND_ANTAG INCURSION
+MIDROUND_ANTAG INCURSION
 #MIDROUND_ANTAG TRAITORBRO
 MIDROUND_ANTAG TRAITORCHAN
 MIDROUND_ANTAG INTERNAL_AFFAIRS
@@ -359,7 +359,7 @@ MINIMAL_ACCESS_THRESHOLD 20
 #JOBS_HAVE_MINIMAL_ACCESS
 
 ## Uncomment to give assistants maint access.
-ASSISTANTS_HAVE_MAINT_ACCESS
+#ASSISTANTS_HAVE_MAINT_ACCESS
 
 ## Uncoment to give security maint access. Note that if you dectivate JOBS_HAVE_MINIMAL_ACCESS security already gets maint from that.
 SECURITY_HAS_MAINT_ACCESS
@@ -407,9 +407,9 @@ DEFAULT_LAWS 2
 ## standard-ish laws. These are fairly ok to run
 RANDOM_LAWS asimov
 RANDOM_LAWS asimovpp
-RANDOM_LAWS paladin
-RANDOM_LAWS robocop
+RANDOM_LAWS crewsimov
 RANDOM_LAWS corporate
+RANDOM_LAWS maintain
 
 ## Quirky laws. Shouldn't cause too much harm
 RANDOM_LAWS hippocratic
@@ -419,6 +419,8 @@ RANDOM_LAWS maintain
 #RANDOM_LAWS peacekeeper
 #RANDOM_LAWS reporter
 #RANDOM_LAWS hulkamania
+#RANDOM_LAWS paladin
+#RANDOM_LAWS robocop
 
 ## Bad idea laws. Probably shouldn't enable these
 #RANDOM_LAWS syndie
@@ -611,12 +613,6 @@ RANDOMIZE_SHIFT_TIME
 ## Sets shift time to server time at roundstart. Overridden by RANDOMIZE_SHIFT_TIME ##
 #SHIFT_TIME_REALTIME
 
-## Maximum fine for a citation
-MAXFINE 2000
-
-## Enable the capitalist agenda on your server.
-ECONOMY
-
 ## Crew objectives
 ALLOW_CREW_OBJECTIVES
 
@@ -635,4 +631,4 @@ RESTRICTED_SUICIDE
 #DONATOR_ITEMS
 
 ## Do we want all the heads to get codes to spare safe, or just one highest in CoC?
-#SPARE_ENFORCE_COC
+SPARE_ENFORCE_COC

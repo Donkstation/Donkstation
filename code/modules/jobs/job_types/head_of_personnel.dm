@@ -19,6 +19,10 @@
 
 	outfit = /datum/outfit/job/hop
 
+	species_outfits = list(
+		SPECIES_PLASMAMAN = /datum/outfit/plasmaman/hop
+	)
+
 	access = list(ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
 			            ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_CHANGE_IDS, ACCESS_AI_UPLOAD, ACCESS_EVA, ACCESS_HEADS,
 			            ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_CONSTRUCTION, ACCESS_MORGUE,
@@ -38,6 +42,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
 	departments = DEPARTMENT_COMMAND | DEPARTMENT_SERVICE
+
+/datum/job/hop/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	job_tips(M, "headofpersonnel") //DONKSTATION CHANGE: added job pop-ups
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"

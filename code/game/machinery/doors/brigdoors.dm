@@ -2,11 +2,8 @@
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Small Fonts"
-#define MAX_TIMER 15 MINUTES
 
-#define PRESET_SHORT 2 MINUTES
-#define PRESET_MEDIUM 3 MINUTES
-#define PRESET_LONG 5 MINUTES
+
 
 
 
@@ -135,6 +132,7 @@
 	activation_time = null
 	set_timer(0)
 	update_icon()
+	ui_update()
 
 	for(var/datum/weakref/door_ref as anything in doors)
 		var/obj/machinery/door/window/brigdoor/door = door_ref.resolve()
@@ -166,10 +164,15 @@
 		. /= 10
 
 /obj/machinery/door_timer/proc/set_timer(value)
-	var/new_time = clamp(value,0,MAX_TIMER)
+	var/new_time = clamp(value,0,CONFIG_GET(number/brig_timer_max) MINUTES)
 	. = new_time == timer_duration //return 1 on no change
 	timer_duration = new_time
 
+
+/obj/machinery/door_timer/ui_requires_update(mob/user, datum/tgui/ui)
+	. = ..()
+	if(timing)
+		. = TRUE // Autoupdate while timer is counting down
 
 /obj/machinery/door_timer/ui_state(mob/user)
 	return GLOB.default_state
@@ -256,7 +259,7 @@
 		if("time")
 			var/value = text2num(params["adjust"])
 			if(value)
-				. = set_timer(time_left()+value)
+				. = !set_timer(time_left()+value)
 				investigate_log("[key_name(usr)] modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]", INVESTIGATE_RECORDS)
 				user.log_message("modified the timer by [value/10] seconds for cell [id], currently [time_left(seconds = TRUE)]", LOG_ATTACK)
 		if("start")
@@ -281,27 +284,24 @@
 			var/preset_time = time_left()
 			switch(preset)
 				if("short")
-					preset_time = PRESET_SHORT
+					preset_time = CONFIG_GET(number/brig_timer_preset_short) MINUTES
 				if("medium")
-					preset_time = PRESET_MEDIUM
+					preset_time = CONFIG_GET(number/brig_timer_preset_med) MINUTES
 				if("long")
-					preset_time = PRESET_LONG
-			. = set_timer(preset_time)
+					preset_time = CONFIG_GET(number/brig_timer_preset_long) MINUTES
+			. = !set_timer(preset_time)
 			investigate_log("[key_name(usr)] set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
 			user.log_message("set cell [id]'s timer to [preset_time/10] seconds", LOG_ATTACK)
 			if(timing)
 				activation_time = world.time
 		else
 			. = FALSE
-	
 
 
 
-#undef PRESET_SHORT
-#undef PRESET_MEDIUM
-#undef PRESET_LONG
 
-#undef MAX_TIMER
+
+
 #undef FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
