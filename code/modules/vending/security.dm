@@ -16,7 +16,7 @@
 					/obj/item/holosign_creator/security = 3,
 					/obj/item/restraints/legcuffs/bola/energy = 7,
 					/obj/item/club = 5,
-					// Donkstation Change Start: PR #79
+					// Donkstation Change Start: blue security clothing is free for security
 				    /obj/item/clothing/head/helmet/blueshirt = 2,
 				    /obj/item/clothing/suit/armor/vest/blueshirt = 2)
 					// Donkstation Change End: PR #79
