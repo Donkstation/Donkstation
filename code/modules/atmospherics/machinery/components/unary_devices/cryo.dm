@@ -37,6 +37,7 @@
 	var/escape_in_progress = FALSE
 	var/message_cooldown
 	var/breakout_time = 300
+	var/emagged = FALSE //DONKSTATION CHANGE: 8a15645
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
 
@@ -56,6 +57,11 @@
 	. = ..() // Parent proc takes care of removing occupant if necessary
 	if (AM == oldoccupant)
 		update_icon()
+
+/obj/machinery/atmospherics/components/unary/cryo_cell/emag_act(mob/user) //DONKSTATION CHANGE: 8a15645
+	if(!emagged)
+		emagged = TRUE
+		to_chat(user, "<span class='notice'>You short out the cryotube's automatic alert and ejection systems.</span>")
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/on_construction()
 	..(dir, dir)
@@ -189,7 +195,7 @@
 		radio.talk_into(src, msg, radio_channel)
 		return
 
-	if(!beaker?.reagents?.reagent_list.len) //No beaker or beaker without reagents with stop the machine from running.
+	if(!beaker?.reagents?.reagent_list.len && !emagged) //No beaker or beaker without reagents with stop the machine from running.
 		on = FALSE
 		update_icon()
 		var/msg = "Aborting. No beaker or chemicals installed."
@@ -205,15 +211,18 @@
 		return
 
 	if(mob_occupant.health >= mob_occupant.getMaxHealth()) // Don't bother with fully healed people.
-		on = FALSE
-		update_icon()
-		playsound(src, 'sound/machines/cryo_warning.ogg', volume) // Bug the doctors.
-		var/msg = "Patient fully restored."
-		if(autoeject) // Eject if configured.
-			msg += " Auto ejecting patient now."
-			open_machine()
-		radio.talk_into(src, msg, radio_channel)
-		return
+		if(!emagged) //Regular ejecting or alerting.
+			on = FALSE
+			update_icon()
+			playsound(src, 'sound/machines/cryo_warning.ogg', volume) // Bug the doctors.
+			var/msg = "Patient fully restored."
+			if(autoeject) // Eject if configured.
+				msg += " Auto ejecting patient now."
+				open_machine()
+			radio.talk_into(src, msg, radio_channel)
+			return
+		else //Someones been tampering with the cryogenics..
+			return
 
 	var/datum/gas_mixture/air1 = airs[1]
 

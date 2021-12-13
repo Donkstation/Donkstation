@@ -38,6 +38,7 @@
 	var/alarm_on = FALSE
 	var/busy = FALSE
 	var/emped = FALSE  //Number of consecutive EMP's on this camera
+	var/emagged = FALSE //Scrambles the Security Cameras C-Tag. DONKSTATION CHANGE: 8a15645
 	var/in_use_lights = 0
 
 	// Upgrades bitflag
@@ -132,6 +133,8 @@
 		. += "<span class='info'>Its maintenance panel is currently open.</span>"
 		if(!status && powered())
 			. += "<span class='info'>It can reactivated with a <b>screwdriver</b>.</span>"
+	if(emagged)
+		. += "There is a red light blinking on the service panel."
 
 /obj/machinery/camera/emp_act(severity)
 	. = ..()
@@ -165,6 +168,15 @@
 					M.unset_machine()
 					M.reset_perspective(null)
 					to_chat(M, "The screen bursts into static.")
+
+/obj/machinery/camera/emag_act(mob/user) //DONKSTATION CHANGE: Adds emag effects to Security Cameras. 8a15645
+	var/list/scrambledtags = list("S*!(@SH(!", "F*^b^!XAK", "BCN(!MO)", "SYSTTIMEOUT", "NET!RELOG", "IT-CODE AM", "NC*!(MAL", "DIAGMOD2")
+	if(!emagged)
+		to_chat(user, "<span class='notice'>You wave the sequencer over the security camera, scrambling its network tag.")
+		do_sparks(2, 5, src)
+		emagged = TRUE 
+		c_tag = pick(scrambledtags)
+	
 
 /obj/machinery/camera/ex_act(severity, target)
 	if(invuln)

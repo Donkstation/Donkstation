@@ -15,6 +15,7 @@
 	var/obj/item/reagent_containers/food/grilled_item
 	var/grill_time = 0
 	var/datum/looping_sound/grill/grill_loop
+	var/emagged = FALSE //Now THAT'S H O T. PHEW, FLAMES FOR EVERYONE. DONKSTATION CHANGE: 8a15645
 
 /obj/machinery/grill/Initialize()
 	. = ..()
@@ -64,6 +65,30 @@
 				update_icon()
 				return
 	..()
+
+/obj/machinery/grill/attack_hand(mob/user)
+	if(user.pulling && user.a_intent == "grab" && iscarbon(user.pulling))
+		if(user.grab_state < GRAB_AGGRESSIVE)
+			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+			return
+		if(grill_fuel)
+			var/mob/living/carbon/C = user.pulling
+			user.visible_message("<span class = 'danger'>[user] slams [C]'s face into [src]!</span>")
+			C.emote("scream")
+			if(emagged)
+				C.apply_damage(35, BURN, BODY_ZONE_HEAD) //HOT GRILL HOT GRILL
+				C.Paralyze(60)
+			else
+				C.apply_damage(20, BURN, BODY_ZONE_HEAD)
+				C.Paralyze(60)
+			user.changeNext_move(CLICK_CD_MELEE)
+		else //We don't bother checking for emagging if it's off, because I mean... why would you?
+			var/mob/living/carbon/C = user.pulling
+			user.visible_message("<span class = 'danger'>[user] slams [C]'s face into [src]! Luckily it was off.</span>")
+			C.apply_damage(10, BRUTE, BODY_ZONE_HEAD)
+			C.Paralyze(30)
+			user.changeNext_move(CLICK_CD_MELEE)
+
 
 /obj/machinery/grill/process(delta_time)
 	..()
@@ -143,6 +168,12 @@
 
 /obj/machinery/grill/unwrenched
 	anchored = FALSE
+
+/obj/machinery/grill/emag_act(mob/user) //DONKSTATION CHANGE: 8a15645
+	if(!emagged)
+		emagged = TRUE
+		to_chat(user, "<span class='notice'>You swipe the sequencer over the grill, and flames shoot up. That's Badass!</span>")
+		visible_message("<span class='warning'Flames erupt from [src]. That was badass!</span>")
 
 #undef GRILL_FUELUSAGE_IDLE
 #undef GRILL_FUELUSAGE_ACTIVE

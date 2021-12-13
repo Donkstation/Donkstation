@@ -553,6 +553,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = ITEM_SLOT_BELT
 	var/lit = 0
 	var/fancy = TRUE
+	var/emagged = FALSE //It's really the small things we don't think about. DONKSTATION CHANGE: 8a15645
 	var/overlay_state
 	var/overlay_list = list(
 		"plain",
@@ -619,7 +620,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(user.is_holding(src))
 		if(!lit)
 			set_lit(TRUE)
-			if(fancy)
+			if(fancy && !emagged)
 				user.visible_message("Without even breaking stride, [user] flips open and lights [src] in one smooth movement.", "<span class='notice'>Without even breaking stride, you flip open and light [src] in one smooth movement.</span>")
 				playsound(src.loc, 'sound/items/zippo_on.ogg', 100, 1)
 			else
@@ -633,14 +634,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				else
 					prot = TRUE
 
-				if(prot || prob(75))
+				if((prot || prob(75)) && !emagged) 
 					user.visible_message("After a few attempts, [user] manages to light [src].", "<span class='notice'>After a few attempts, you manage to light [src].</span>")
 				else
 					var/hitzone = user.held_index_to_dir(user.active_hand_index) == "r" ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND
-					user.apply_damage(5, BURN, hitzone)
-					user.visible_message("<span class='warning'>After a few attempts, [user] manages to light [src] - however, [user.p_they()] burn [user.p_their()] finger in the process.</span>", "<span class='warning'>You burn yourself while lighting the lighter!</span>")
+					if(emagged)
+						user.apply_damage(10, BURN, hitzone)
+						user.visible_message("<span class='warning'>After a few attempts, [user] manages to light [src] - however, [user.p_they()] burn [user.p_their()] finger in the process.</span>", "<span class='warning'>You burn yourself while lighting the lighter! That felt really Hot!</span>")
+					else
+						user.apply_damage(5, BURN, hitzone)
+						user.visible_message("<span class='warning'>After a few attempts, [user] manages to light [src] - however, [user.p_they()] burn [user.p_their()] finger in the process.</span>", "<span class='warning'>You burn yourself while lighting the lighter!</span>")
+					playsound(src.loc, 'sound/items/lighter_on.ogg', 100, 1)
 					SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "burnt_thumb", /datum/mood_event/burnt_thumb)
-				playsound(src.loc, 'sound/items/lighter_on.ogg', 100, 1)
 
 		else
 			set_lit(FALSE)
@@ -736,6 +741,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	overlay_state = "slime"
 	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/fuel = 5, /datum/reagent/medicine/pyroxadone = 5)
 
+/obj/item/lighter/emag_act(mob/user) //DONKSTATION CHANGE: 8a15645
+	if(!emagged)
+		emagged = TRUE 
+		to_chat(user, "<span class='notice'>You burn out the lighters limiter.</span>")
 
 ///////////
 //ROLLING//
