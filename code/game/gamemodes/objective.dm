@@ -984,6 +984,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		/datum/objective/nuclear,
 		/datum/objective/capture,
 		/datum/objective/absorb,
+		/datum/objective/auto_complete, //DONKSTATION CHANGE: Added auto-completeing objectives
 		/datum/objective/custom
 	),/proc/cmp_typepaths_asc)
 

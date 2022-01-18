@@ -3449,6 +3449,7 @@
 #include "donkstation\code\modules\client\loadout\loadout_hat.dm"
 #include "donkstation\code\modules\clothing\outfits\ert.dm"
 #include "donkstation\code\modules\clothing\under\trek.dm"
+#include "donkstation\code\modules\datum\objective\objective.dm"
 #include "donkstation\code\modules\job_tips\asset_list.dm"
 #include "donkstation\code\modules\job_tips\job_tips.dm"
 #include "donkstation\code\modules\language\language_holder.dm"

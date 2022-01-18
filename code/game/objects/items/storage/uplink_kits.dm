@@ -582,4 +582,15 @@
 	for(var/i in implants)
 		group.register(i)
 	desc += " The implants are registered to the \"[group.name]\" group."
-  
+
+/obj/item/storage/box/syndie_kit/band
+	name = "Band uniforms"
+	desc = "Its time to get the band back together."
+
+/obj/item/storage/box/syndie_kit/band/PopulateContents()
+	for(var/i in 1 to 2)
+		new /obj/item/clothing/head/fedora(src)
+		new /obj/item/clothing/under/suit/black(src)
+		new /obj/item/clothing/suit/jacket/leather(src)
+		new /obj/item/clothing/neck/tie/black(src)
+		new /obj/item/clothing/glasses/sunglasses(src)
